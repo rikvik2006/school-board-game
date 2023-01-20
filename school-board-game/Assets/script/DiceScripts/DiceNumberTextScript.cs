@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class DiceNumberTextScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    TextMesh text;
+    public static int diceNumber;
+
+    private void Start()
     {
-        
+        text = GetComponent<TextMesh>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        text.text = diceNumber.ToString();
     }
 }

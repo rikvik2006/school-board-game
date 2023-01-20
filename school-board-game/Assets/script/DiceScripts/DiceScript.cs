@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class DiceScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    static Rigidbody rb;
+    public static Vector3 diceVelocity;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        Debug.Log(rb);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        diceVelocity = rb.velocity;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DiceNumberTextScript.diceNumber = 0;
+            float dirX = Random.Range(0, 500);
+            float dirY = Random.Range(0, 500);
+            float dirZ = Random.Range(0, 500);
+
+            transform.position = new Vector3(0, 2, 0);
+            transform.rotation = Quaternion.identity;
+            rb.AddForce(transform.up * 500);
+            rb.AddTorque(dirX, dirY, dirZ);
+        }
     }
 }
