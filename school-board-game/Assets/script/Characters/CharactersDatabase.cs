@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharactersDatabase : MonoBehaviour
+[CreateAssetMenu]
+public class CharactersDatabase : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    public Character[] character;
+
+    public int CharacterCount
     {
-        
+        get
+        {
+            return character.Length;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public Character GetCharacter(int index)
     {
-        
+        return character[index];
     }
 }
