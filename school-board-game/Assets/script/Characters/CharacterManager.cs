@@ -11,6 +11,9 @@ public class CharacterManager : MonoBehaviour
     public Transform[] playersPositions;
     public Material[] playerMaterials;
     public GameObject[] players;
+    public MeshRenderer[] backPackMeshRenderers;
+    public GameObject startButton;
+    public Text startButtonText;
 
     private int selectOption = 0;
     private int selectForPlayer = 0;
@@ -22,6 +25,35 @@ public class CharacterManager : MonoBehaviour
         foreach (GameObject player in players)
         {
             player.SetActive(false);
+        }
+        startButton.SetActive(false);
+
+    }
+
+    private void Update()
+    {
+        List<bool> allActive = new List<bool>();
+        foreach (GameObject player in players)
+        {
+            if (player.activeSelf)
+            {
+                allActive.Add(true);
+            }
+            else
+            {
+                allActive.Add(false);
+            }
+
+        }
+
+        if (allActive.Find((value) => value == false))
+        {
+            return;
+        }
+        else
+        {
+            Debug.Log("Setting active start button");
+            startButton.SetActive(true);
         }
     }
 
@@ -69,6 +101,7 @@ public class CharacterManager : MonoBehaviour
         GameObject player = players[selectForPlayer];
         MeshRenderer meshRenderer = player.GetComponent<MeshRenderer>();
         meshRenderer.material = playerMaterials[selectedColor];
+        backPackMeshRenderers[selectForPlayer].material = playerMaterials[selectedColor];
         player.SetActive(true);
         // character.characterGameObject.inst
     }
