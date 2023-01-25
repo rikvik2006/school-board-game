@@ -10,6 +10,7 @@ public class CardsGenerate : MonoBehaviour
     public Vector3 cardPosition;
     public Vector3 center;
     public TextMeshProUGUI cardLetter;
+    public WordDatabase wordDatabase;
 
     private string[] letters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
     private int[] letterCount = new int[26];
@@ -39,6 +40,9 @@ public class CardsGenerate : MonoBehaviour
 
             letterCount[letterIndex]++;
 
+            // Save the letter in the word database
+            wordDatabase.AddLetter(letter, gameObject.name);
+
             GameObject card = Instantiate(cardPrefab, currentPosition, Quaternion.identity);
 
             card.transform.LookAt(center);
@@ -48,7 +52,6 @@ public class CardsGenerate : MonoBehaviour
             card.transform.rotation = rotation;
             card.transform.Rotate(Vector3.up, 90f);
 
-            Debug.Log(letter);
             cardLetter.text = letter;
             generateCards++;
         }

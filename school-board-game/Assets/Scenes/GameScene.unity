@@ -1039,6 +1039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 618141623}
   - component: {fileID: 618141622}
+  - component: {fileID: 618141624}
   m_Layer: 0
   m_Name: GameControl
   m_TagString: Untagged
@@ -1073,6 +1074,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &618141624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618141621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f2cf4df16fcea4ab8cb0c03b096224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wordsAssingers: []
 --- !u!1 &619873696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4539303334718746859, guid: bdc58710d9c601744acd345dd572b584, type: 3}
@@ -1139,8 +1153,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 2125637115}
-  cardPosition: {x: 20, y: 0, z: 0}
-  cardLetter: {fileID: 433256344}
+  cardPosition: {x: 0, y: 0, z: -20}
+  center: {x: 0, y: 0, z: 0}
+  cardLetter: {fileID: 1330517541}
+  wordDatabase: {fileID: 618141624}
+  cardSpacing: {x: 3.7, y: 0, z: 0}
 --- !u!1 &639168480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,8 +1910,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 2125637115}
-  cardPosition: {x: -20, y: 0, z: 0}
-  cardLetter: {fileID: 433256344}
+  cardPosition: {x: 20, y: 0, z: 0}
+  center: {x: 0, y: 0, z: 0}
+  cardLetter: {fileID: 1330517541}
+  wordDatabase: {fileID: 618141624}
+  cardSpacing: {x: 0, y: 0, z: 3.7}
 --- !u!1 &1036262688
 GameObject:
   m_ObjectHideFlags: 3
@@ -2282,6 +2302,17 @@ Transform:
   m_Father: {fileID: 54934976}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1330517541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7625423997355361737, guid: aac0732e2f3d11d4889a8df7770c0d31, type: 3}
+  m_PrefabInstance: {fileID: 431111079067548206}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1438653351
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,8 +2441,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 2125637115}
-  cardPosition: {x: 0, y: 0, z: -20}
-  cardLetter: {fileID: 433256344}
+  cardPosition: {x: -20, y: 0, z: 0}
+  center: {x: 0, y: 0, z: 0}
+  cardLetter: {fileID: 1330517541}
+  wordDatabase: {fileID: 618141624}
+  cardSpacing: {x: 0, y: 0, z: 3.7}
 --- !u!1001 &1503352500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2810,6 +2844,7 @@ PlayableDirector:
     value: {fileID: 963194230}
   m_ExposedReferences:
     m_References:
+    - 1a5daf9abb2085c46a4bcd95d46a67f0: {fileID: 831066825}
     - 2ae5162824dbe414bb81beb2777583e7: {fileID: 831066825}
     - 43b32dd554ad3d14c8f8d5d61b1a8ca2: {fileID: 126376185}
 --- !u!4 &1841966270
@@ -3236,7 +3271,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 2125637115}
   cardPosition: {x: 0, y: 0, z: 20}
-  cardLetter: {fileID: 433256344}
+  center: {x: 0, y: 0, z: 0}
+  cardLetter: {fileID: 1330517541}
+  wordDatabase: {fileID: 618141624}
+  cardSpacing: {x: 3.7, y: 0, z: 0}
 --- !u!1 &2125637115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 431111080974802901, guid: aac0732e2f3d11d4889a8df7770c0d31, type: 3}
@@ -3305,6 +3343,10 @@ PrefabInstance:
     - target: {fileID: 431111080974802901, guid: aac0732e2f3d11d4889a8df7770c0d31, type: 3}
       propertyPath: m_Name
       value: WordCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625423997355361737, guid: aac0732e2f3d11d4889a8df7770c0d31, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 431111080974802898, guid: aac0732e2f3d11d4889a8df7770c0d31, type: 3}
