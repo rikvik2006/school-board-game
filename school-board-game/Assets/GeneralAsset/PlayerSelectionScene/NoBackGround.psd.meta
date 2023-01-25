@@ -122,9 +122,9 @@ TextureImporter:
       name: NoBackGround_0
       rect:
         serializedVersion: 2
-        x: 26
+        x: 35
         y: 0
-        width: 399
+        width: 379
         height: 582
       alignment: 9
       pivot: {x: 0.538091, y: 0.3290729}
@@ -144,11 +144,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 549
-        y: 0
+        y: 10
         width: 412
-        height: 582
+        height: 572
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,6 +156,48 @@ TextureImporter:
       bones: []
       spriteID: 5d8eb04079253084a918e0e918203171
       internalID: -1588450043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoBackGround_2
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 0
+        width: 407
+        height: 582
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c878271f17d424d468303a2841a23181
+      internalID: -1405719337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoBackGround_3
+      rect:
+        serializedVersion: 2
+        x: 1725
+        y: 19
+        width: 409
+        height: 563
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e609c4e7080790b42a9c8b5d09ba4353
+      internalID: 1591478044
       vertices: []
       indices: 
       edges: []
@@ -172,6 +214,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       NoBackGround_0: -2006259287
+      NoBackGround_2: -1405719337
+      NoBackGround_3: 1591478044
       NoBackGround_1: -1588450043
   spritePackingTag: 
   pSDRemoveMatte: 0
