@@ -32,10 +32,25 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player1.GetComponent<FollowThePaht>().waypointIndex > player1StartWaypoint)
+        {
+            player1.GetComponent<FollowThePaht>().moveallowed = false;
+            player1MoveText.gameObject.SetActive(false);
+            player2MoveText.gameObject.SetActive(true);
+            player1StartWaypoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+        }
 
+        if (player1.GetComponent<FollowThePaht>().waypointIndex == player1.GetComponent<FollowThePaht>().waypoints.Length)
+        {
+            whoWinsText.gameObject.SetActive(true);
+            player1MoveText.gameObject.SetActive(false);
+            player2MoveText.gameObject.SetActive(false);
+            whoWinsText.GetComponent<Text>().text = "Player 1 Wins!";
+            gameOver = true;
+        }
     }
 
-    public static void MMovePlayer(int playerToMove)
+    public static void MovePlayer(int playerToMove)
     {
         switch (playerToMove)
         {
