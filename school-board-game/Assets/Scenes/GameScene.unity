@@ -3151,7 +3151,7 @@ MonoBehaviour:
   - {fileID: 92537425}
   inventory: {fileID: 2008372670}
   wordDatabase: {fileID: 618141624}
-  namePlayer: {fileID: 626705300}
+  namePlayerText: {fileID: 626705300}
   noCardInInventory: {fileID: 1211009041}
 --- !u!1 &950506658
 GameObject:
@@ -6097,7 +6097,7 @@ MonoBehaviour:
   - {fileID: 92537425}
   inventory: {fileID: 2008372670}
   wordDatabase: {fileID: 618141624}
-  namePlayer: {fileID: 626705300}
+  namePlayerText: {fileID: 626705300}
   noCardInInventory: {fileID: 1211009041}
 --- !u!1 &1763626113
 GameObject:
@@ -6530,7 +6530,7 @@ MonoBehaviour:
   - {fileID: 92537425}
   inventory: {fileID: 2008372670}
   wordDatabase: {fileID: 618141624}
-  namePlayer: {fileID: 626705300}
+  namePlayerText: {fileID: 626705300}
   noCardInInventory: {fileID: 1211009041}
 --- !u!1001 &1973549929
 PrefabInstance:
@@ -6881,7 +6881,7 @@ MonoBehaviour:
   - {fileID: 92537425}
   inventory: {fileID: 2008372670}
   wordDatabase: {fileID: 618141624}
-  namePlayer: {fileID: 626705300}
+  namePlayerText: {fileID: 626705300}
   noCardInInventory: {fileID: 1211009041}
 --- !u!1 &2012431971
 GameObject:

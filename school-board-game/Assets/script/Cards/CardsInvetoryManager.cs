@@ -9,7 +9,7 @@ public class CardsInvetoryManager : MonoBehaviour
     public GameObject[] cards;
     public GameObject inventory;
     public WordDatabase wordDatabase;
-    public TextMeshProUGUI namePlayer;
+    public TMP_Text namePlayerText;  // Correct type for TextMeshProUGUI is TMP_Text, i think is a general type for all textmeshpro
     public GameObject noCardInInventory;
 
     void Start()
@@ -41,6 +41,8 @@ public class CardsInvetoryManager : MonoBehaviour
             }
 
             noCardInInventory.SetActive(false);
+            namePlayerText.text = namePlayer;
+
             int i = 0;
             foreach (GameObject card in cards)
             {
