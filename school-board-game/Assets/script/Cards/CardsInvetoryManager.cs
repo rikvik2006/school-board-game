@@ -9,6 +9,8 @@ public class CardsInvetoryManager : MonoBehaviour
     public GameObject[] cards;
     public GameObject inventory;
     public WordDatabase wordDatabase;
+    public TextMeshProUGUI namePlayer;
+    public GameObject noCardInInventory;
 
     void Start()
     {
@@ -25,13 +27,20 @@ public class CardsInvetoryManager : MonoBehaviour
 
     }
 
-    public void AddCardForPlayerOne()
+    public void AddCardForPlayer(string namePlayer)
     {
         if (inventory.activeSelf == false)
         {
             inventory.SetActive(true);
-            List<string> letters = wordDatabase.GetLettersForPlayer("Player1");
+            List<string> letters = wordDatabase.GetLettersForPlayer(namePlayer);
 
+            if (letters.Count <= 0)
+            {
+                noCardInInventory.SetActive(true);
+                return;
+            }
+
+            noCardInInventory.SetActive(false);
             int i = 0;
             foreach (GameObject card in cards)
             {
