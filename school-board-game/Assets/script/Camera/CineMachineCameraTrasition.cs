@@ -18,26 +18,24 @@ public class CineMachineCameraTrasition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if (IsTransitionComplete())
+        // {
+        //     ChangeCamera();
+        // }
+
         if (IsTransitionComplete())
         {
-            ChangeCamera();
+
         }
     }
 
-    public void ChangeCamera()
-    {
-        camera1.Priority = 103;
-        camera2.Priority = 102;
-        camera3.Priority = 101;
-        camera4.Priority = 100;
-
-
-
-        // camera1.Priority = 100;
-        // camera2.Priority = 101;
-        // camera3.Priority = 102;
-        // camera4.Priority = 103;
-    }
+    // public void ChangeCamera()
+    // {
+    //     camera1.Priority = 103;
+    //     camera2.Priority = 102;
+    //     camera3.Priority = 101;
+    //     camera4.Priority = 100;
+    // }
 
     // Check if the cinemachine trasition is complete
     public bool IsTransitionComplete()
