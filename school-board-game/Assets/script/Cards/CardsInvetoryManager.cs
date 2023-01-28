@@ -27,28 +27,41 @@ public class CardsInvetoryManager : MonoBehaviour
 
     public void AddCardForPlayerOne()
     {
-        string[] letters = wordDatabase.GetLettersForPlayer("Player1");
-        inventory.SetActive(true);
-
-        foreach (GameObject card in cards)
+        if (inventory.activeSelf == false)
         {
+            inventory.SetActive(true);
+            List<string> letters = wordDatabase.GetLettersForPlayer("Player1");
 
-            card.SetActive(true);
-            card.GetComponentInChildren<TextMeshProUGUI>().text = letters[0];
-            break;
-        }
-
-        // For each letter in the arry, add a card to the player 1 inventory and update the database
-        foreach (string letter in letters)
-        {
+            int i = 0;
             foreach (GameObject card in cards)
             {
-                if (card.activeSelf == false)
+                card.SetActive(true);
+                card.GetComponentInChildren<TextMeshProUGUI>().text = letters[i];
+                Debug.Log("Letter: " + letters[i] + " i: " + i);
+                i++;
+                break;
+            }
+
+            // For each letter in the list, add a card to the player 1 inventory and update the database
+            foreach (string letter in letters)
+            {
+                foreach (GameObject card in cards)
                 {
-                    card.SetActive(true);
-                    card.GetComponentInChildren<TextMeshProUGUI>().text = letter;
-                    break;
+                    if (card.activeSelf == false)
+                    {
+                        card.SetActive(true);
+                        card.GetComponentInChildren<TextMeshProUGUI>().text = letter;
+                        break;
+                    }
                 }
+            }
+        }
+        else
+        {
+            inventory.SetActive(false);
+            foreach (GameObject card in cards)
+            {
+                card.SetActive(false);
             }
         }
     }

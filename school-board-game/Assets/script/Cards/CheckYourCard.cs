@@ -9,12 +9,12 @@ public class CheckYourCard : MonoBehaviour
     public GameObject inventory;
     public GameObject card;
 
-    
+
 
     void Start()
     {
         // Get all the letters for the player
-        string[] letters = wordDatabase.GetLettersForPlayer("player1");
+        List<string> letters = wordDatabase.GetLettersForPlayer("player1");
         // Get the inventory
         // Inventory inventoryScript = inventory.GetComponent<Inventory>();
         // Check if the player has all the letters
