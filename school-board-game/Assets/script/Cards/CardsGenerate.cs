@@ -11,6 +11,8 @@ public class CardsGenerate : MonoBehaviour
     public Vector3 center;
     public TextMeshProUGUI cardLetter;
     public WordDatabase wordDatabase;
+    public float extraRotation;
+    public static bool needNewCards = false;
 
     private string[] letters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
     private int[] letterCount = new int[26];
@@ -23,10 +25,19 @@ public class CardsGenerate : MonoBehaviour
     void Start()
     {
         currentPosition = cardPosition;
-        GenerateCards();
     }
 
-    private void GenerateCards()
+    private void Update()
+    {
+        if (needNewCards)
+        {
+            GenerateCards();
+            needNewCards = false;
+        }
+
+    }
+
+    public void GenerateCards()
     {
         while (generateCards < 10)
         {
@@ -52,6 +63,7 @@ public class CardsGenerate : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(center - card.transform.position, Vector3.up);
             card.transform.rotation = rotation;
             card.transform.Rotate(Vector3.up, 90f);
+            card.transform.rotation = Quaternion.Euler(0, extraRotation, 0);
 
             cardLetter.text = letter;
             generateCards++;
