@@ -16,12 +16,12 @@ public class WordDatabase : MonoBehaviour
         WordAssigner wordAssigner = new WordAssigner();
         wordAssigner.letter = word;
         wordAssigner.forPlayer = player;
-        Debug.Log($"Letter: {wordAssigner.letter} for player: {wordAssigner.forPlayer}");
+        // Debug.Log($"Letter: {wordAssigner.letter} for player: {wordAssigner.forPlayer}");
 
 
         // Add the new letter to the array
         wordsAssingers.Add(wordAssigner);
-        Debug.Log($"wordsAssingers: {wordsAssingers.Count}");
+        // Debug.Log($"wordsAssingers: {wordsAssingers.Count}");
     }
 
     // Get all the letters for a player

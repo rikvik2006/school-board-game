@@ -52,7 +52,7 @@ public class CardsGenerate : MonoBehaviour
             letterCount[letterIndex]++;
 
             // Save the letter in the word database
-            Debug.Log("Letter: " + letter + " GameObject: " + gameObject.name);
+            // Debug.Log("Letter: " + letter + " GameObject: " + gameObject.name);
             wordDatabase.AddLetter(letter, gameObject.name);
 
             GameObject card = Instantiate(cardPrefab, currentPosition, Quaternion.identity);
