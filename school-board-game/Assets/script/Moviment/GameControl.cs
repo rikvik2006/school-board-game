@@ -32,6 +32,7 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (player1.GetComponent<FollowThePaht>().waypointIndex > player1StartWaypoint)
         {
             player1.GetComponent<FollowThePaht>().moveallowed = false;
