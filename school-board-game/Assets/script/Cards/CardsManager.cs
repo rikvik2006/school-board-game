@@ -9,6 +9,8 @@ public class CardsManager : MonoBehaviour
     public CameraManager cameraManager;
     public GameObject countDownGB;
     public GameObject checkYourCardsText;
+    public TextMeshProUGUI countDownText;
+
     private CardsGenerate cardsGeneratorPlayer1, cardsGeneratorPlayer2, cardsGeneratorPlayer3, cardsGeneratorPlayer4;
     private int countDown = 3;
     private int countDownToCheckCardsSeconds = 0;
@@ -48,6 +50,7 @@ public class CardsManager : MonoBehaviour
         cardsGeneratorPlayer3.GenerateCards();
         cardsGeneratorPlayer4.GenerateCards();
 
+        CheckCards();
         StartCoroutine(CountDownToCheckCards());
     }
 
@@ -78,9 +81,9 @@ public class CardsManager : MonoBehaviour
 
     IEnumerator CountDownToCheckCards()
     {
-        while (countDownToCheckCardsMinute > 0 && countDownToCheckCardsSeconds > 0)
+        while (countDownToCheckCardsMinute > 0 && countDownToCheckCardsSeconds >= 0)
         {
-
+            Debug.Log("In the while loop");
 
             if (countDownToCheckCardsSeconds <= 0 && countDownToCheckCardsMinute > 0)
             {
@@ -89,16 +92,16 @@ public class CardsManager : MonoBehaviour
             }
             if (countDownToCheckCardsMinute <= 0 && countDownToCheckCardsSeconds <= 0)
             {
+                // Exit from the loop and the corutine
                 yield break;
             }
 
-
-            TextMeshProUGUI countDownText = checkYourCardsText.GetComponentsInChildren<TextMeshProUGUI>()[1];
+            Debug.Log($"{countDownToCheckCardsMinute.ToString()}:{countDownToCheckCardsSeconds.ToString()}");
             countDownText.text = $"{countDownToCheckCardsMinute.ToString()}:{countDownToCheckCardsSeconds.ToString()}";
             yield return new WaitForSeconds(1f);
             countDownToCheckCardsSeconds--;
         }
 
-
+        yield return null;
     }
 }
