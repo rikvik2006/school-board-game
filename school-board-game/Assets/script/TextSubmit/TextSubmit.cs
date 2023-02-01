@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TextSubmit : MonoBehaviour
 {
     public RectTransform submitForm;
+    public TextMeshProUGUI playerNameText;
+    [HideInInspector] public string playerName;
     private float submitFormStatus = 0;
 
     public void ShowReactangle()
@@ -13,6 +16,7 @@ public class TextSubmit : MonoBehaviour
         {
             submitForm.gameObject.SetActive(true);
             StartCoroutine(ShowReactangleCoroutine());
+            playerName = playerNameText.text;
             submitFormStatus = 1;
         }
     }
@@ -22,6 +26,7 @@ public class TextSubmit : MonoBehaviour
         if (submitFormStatus == 1)
         {
             StartCoroutine(HideReactangleCoroutine());
+            playerName = "";
             submitFormStatus = 0;
         }
     }
