@@ -11,6 +11,11 @@ public class FollowThePaht : MonoBehaviour
     public int waypointIndex = 0;
     public bool moveallowed = false;
     // Start is called before the first frame update
+
+    // Custom moviment
+    [HideInInspector] public Vector3 destination;
+    [HideInInspector] public int currentTiles;
+    [HideInInspector] public int destinationTiles;
     private void Start()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, waypoints[waypointIndex].transform.position.z);
@@ -29,9 +34,11 @@ public class FollowThePaht : MonoBehaviour
     {
         if (waypointIndex <= waypoints.Length - 1)
         {
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
+            Vector3 wayPointPosition = waypoints[waypointIndex].transform.position;
+            wayPointPosition.Set(wayPointPosition.x, transform.position.y, wayPointPosition.z);
+            transform.position = Vector3.MoveTowards(transform.position, wayPointPosition, moveSpeed * Time.deltaTime);
 
-            if (transform.position == waypoints[waypointIndex].transform.position)
+            if (transform.position.x == waypoints[waypointIndex].transform.position.x && transform.position.z == waypoints[waypointIndex].transform.position.z)
             {
                 waypointIndex += 1;
             }
@@ -41,4 +48,17 @@ public class FollowThePaht : MonoBehaviour
             Debug.Log($"{gameObject.name} Won");
         }
     }
+
+    // private void Move()
+    // {
+    //     transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+
+    //     if (transform.position == destination)
+    //     {
+    //         moveallowed = false;
+    //         currentTiles = destinationTiles;
+    //     }
+    // }
+
+
 }
