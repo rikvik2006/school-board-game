@@ -83,7 +83,7 @@ public class CardsManager : MonoBehaviour
     {
         while (countDownToCheckCardsMinute > 0 && countDownToCheckCardsSeconds >= 0)
         {
-            Debug.Log("In the while loop");
+            // Debug.Log("In the while loop");
 
             if (countDownToCheckCardsSeconds <= 0 && countDownToCheckCardsMinute > 0)
             {
@@ -96,7 +96,7 @@ public class CardsManager : MonoBehaviour
                 yield break;
             }
 
-            Debug.Log($"{countDownToCheckCardsMinute.ToString()}:{countDownToCheckCardsSeconds.ToString()}");
+            // Debug.Log($"{countDownToCheckCardsMinute.ToString()}:{countDownToCheckCardsSeconds.ToString()}");
             countDownText.text = $"{countDownToCheckCardsMinute.ToString()}:{countDownToCheckCardsSeconds.ToString()}";
             yield return new WaitForSeconds(1f);
             countDownToCheckCardsSeconds--;

@@ -7,7 +7,7 @@ public class WordDatabase : MonoBehaviour
 {
 
     [SerializeField]
-    public List<WordAssigner> wordsAssingers;
+    public List<WordAssigner> wordsAssingers = new List<WordAssigner>();
 
     // Add a new letter in the wordsAssiger array (add a letter in the database)
     public void AddLetter(string word, string player)

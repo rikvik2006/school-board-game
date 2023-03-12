@@ -69,4 +69,16 @@ public class GameControl : MonoBehaviour
                 break;
         }
     }
+
+    // public void MovePlayer(int numberTilesToMove)
+    // {
+    //     // When this function will be called 
+    //     player1.GetComponent<FollowThePaht>().destinationTiles = (player1.GetComponent<FollowThePaht>().currentTiles + numberTilesToMove) % player1.GetComponent<FollowThePaht>().waypoints.Length;
+
+    //     player2.GetComponent<FollowThePaht>().destinationTiles = (player2.GetComponent<FollowThePaht>().currentTiles + numberTilesToMove) % player2.GetComponent<FollowThePaht>().waypoints.Length;
+
+    //     player3.GetComponent<FollowThePaht>().destinationTiles = (player3.GetComponent<FollowThePaht>().currentTiles + numberTilesToMove) % player3.GetComponent<FollowThePaht>().waypoints.Length;
+
+    //     player4.GetComponent<FollowThePaht>().destinationTiles = (player4.GetComponent<FollowThePaht>().currentTiles + numberTilesToMove) % player4.GetComponent<FollowThePaht>().waypoints.Length;
+    // }
 }
