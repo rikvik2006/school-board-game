@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,13 +39,23 @@ public class TextSubmit : MonoBehaviour
     {
         if (submitFormStatus == 1)
         {
-            // if (playerName != "")
-            // {
-            //     HideReactangle();
-            //     FindObjectOfType<CardsInvetoryManager>().AddCardForPlayer(playerName);
-            // }
+            StartCoroutine(CheckTheWordInDictionary("https://api.dictionaryapi.dev/api/v2/entries/en/" + inputField.text, OnDictionaryCheckCompleted));
+        }
+    }
 
-            StartCoroutine(CheckTheWordInDictionary("https://api.dictionaryapi.dev/api/v2/entries/en/" + inputField.text));
+    private void OnDictionaryCheckCompleted(DictionaryEntry[] dictionaryEntry)
+    {
+        if (dictionaryEntry[0].Equals(null)) return;
+
+        if (dictionaryEntry[0].word != inputField.text)
+        {
+            Debug.Log("Word not found");
+            return;
+        }
+        else
+        {
+            Debug.Log("Word found");
+            HideReactangle();
         }
     }
 
@@ -76,7 +87,7 @@ public class TextSubmit : MonoBehaviour
         }
     }
 
-    IEnumerator CheckTheWordInDictionary(string url)
+    IEnumerator CheckTheWordInDictionary(string url, Action<DictionaryEntry[]> callback)
     {
         using (UnityWebRequest response = UnityWebRequest.Get(url))
         {
@@ -91,7 +102,8 @@ public class TextSubmit : MonoBehaviour
             {
                 Debug.Log(response.downloadHandler.text);
                 DictionaryEntry[] stringfyJson = JsonConvert.DeserializeObject<DictionaryEntry[]>(response.downloadHandler.text);
-                Debug.Log(stringfyJson[0].word);
+                callback(stringfyJson);
+                yield return stringfyJson;
             }
 
         }
