@@ -1986,6 +1986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   submitForm: {fileID: 2138230705}
   playerNameText: {fileID: 626705300}
+  inputField: {fileID: 718892877}
   playerName: 
 --- !u!1 &457481163
 GameObject:
@@ -3281,7 +3282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wordDatabase: {fileID: 618141624}
-  textSubmit: {fileID: 439348872}
+  textSubmit: {fileID: 0}
 --- !u!1 &734148491
 GameObject:
   m_ObjectHideFlags: 0
@@ -9078,6 +9079,7 @@ GameObject:
   - component: {fileID: 2101738672}
   - component: {fileID: 2101738671}
   - component: {fileID: 2101738670}
+  - component: {fileID: 2101738673}
   m_Layer: 0
   m_Name: SubmitButton
   m_TagString: Untagged
@@ -9150,7 +9152,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2101738671}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 439348872}
+        m_TargetAssemblyTypeName: TextSubmit, Assembly-CSharp
+        m_MethodName: SubmitForm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2101738671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9189,6 +9203,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101738668}
   m_CullTransparentMesh: 1
+--- !u!114 &2101738673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101738668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9691f131df9e82940b0aecf10eef20d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  submitForm: {fileID: 2138230705}
+  playerNameText: {fileID: 626705300}
+  inputField: {fileID: 718892877}
+  playerName: 
 --- !u!1 &2125637115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 431111080974802901, guid: aac0732e2f3d11d4889a8df7770c0d31, type: 3}

@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Networking;
+using Newtonsoft.Json;
 
 public class TextSubmit : MonoBehaviour
 {
     public RectTransform submitForm;
     public TextMeshProUGUI playerNameText;
+    public TMP_InputField inputField;
     [HideInInspector] public string playerName;
     private float submitFormStatus = 0;
 
@@ -28,6 +31,20 @@ public class TextSubmit : MonoBehaviour
             StartCoroutine(HideReactangleCoroutine());
             playerName = "";
             submitFormStatus = 0;
+        }
+    }
+
+    public void SubmitForm()
+    {
+        if (submitFormStatus == 1)
+        {
+            // if (playerName != "")
+            // {
+            //     HideReactangle();
+            //     FindObjectOfType<CardsInvetoryManager>().AddCardForPlayer(playerName);
+            // }
+
+            StartCoroutine(CheckTheWordInDictionary("https://api.dictionaryapi.dev/api/v2/entries/en/" + inputField.text));
         }
     }
 
@@ -56,6 +73,27 @@ public class TextSubmit : MonoBehaviour
             time += Time.deltaTime * 2;
             submitForm.anchoredPosition = Vector2.Lerp(startPosition, finalPosition, time);
             yield return null;
+        }
+    }
+
+    IEnumerator CheckTheWordInDictionary(string url)
+    {
+        using (UnityWebRequest response = UnityWebRequest.Get(url))
+        {
+            yield return response.SendWebRequest();
+
+            if (response.result == UnityWebRequest.Result.ProtocolError || response.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log(response.error);
+            }
+
+            if (response.result == UnityWebRequest.Result.Success)
+            {
+                Debug.Log(response.downloadHandler.text);
+                DictionaryEntry[] stringfyJson = JsonConvert.DeserializeObject<DictionaryEntry[]>(response.downloadHandler.text);
+                Debug.Log(stringfyJson[0].word);
+            }
+
         }
     }
 

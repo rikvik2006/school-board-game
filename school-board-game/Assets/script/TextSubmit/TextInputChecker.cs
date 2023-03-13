@@ -31,10 +31,9 @@ public class TextInputChecker : MonoBehaviour
         {
             List<string> letters = wordDatabase.GetLettersForPlayer(playerName);
             Debug.Log("Player name: " + playerName);
-            Debug.Log("Letters: ");
-            DumpToConsoleClass.DumpToConsole(letters);
+            Debug.Log("New Value: " + newValue);
 
-            if (letters.Count <= 0)
+            if (letters == null || letters.Count <= 0)
             {
                 return;
             }
@@ -43,7 +42,9 @@ public class TextInputChecker : MonoBehaviour
             {
                 if (!letters.Contains(letter.ToString()))
                 {
-                    inputField.text = inputField.text.Replace(letter.ToString(), "");
+                    // string replace = inputField.text.Replace(letter.ToString(), "");
+                    // Debug.Log("Replace: " + replace);
+                    // inputField.text = replace;
                 }
             }
         }
