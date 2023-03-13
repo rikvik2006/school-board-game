@@ -11,6 +11,9 @@ public class TextSubmit : MonoBehaviour
     public RectTransform submitForm;
     public TextMeshProUGUI playerNameText;
     public TMP_InputField inputField;
+    [Space]
+    [SerializeField]
+    PlayerMoveDatabase playerMoveDatabase;
     [HideInInspector] public string playerName;
     private float submitFormStatus = 0;
 
@@ -54,8 +57,12 @@ public class TextSubmit : MonoBehaviour
         }
         else
         {
+            // Getting the meaning            
+            int randomMeaningObj = UnityEngine.Random.Range(0, dictionaryEntry[0].meanings.Count);
+            int randomMeaningDefinitionsObj = UnityEngine.Random.Range(0, dictionaryEntry[0].meanings[randomMeaningObj].definitions.Count);
+
             Debug.Log("Word found");
-            HideReactangle();
+            playerMoveDatabase.AddPlayerMoveTiles(playerName, inputField.text.Length, inputField.text, dictionaryEntry[0].meanings[randomMeaningObj].definitions[randomMeaningDefinitionsObj].definition);
         }
     }
 
