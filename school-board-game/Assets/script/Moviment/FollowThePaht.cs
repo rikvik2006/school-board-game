@@ -34,9 +34,13 @@ public class FollowThePaht : MonoBehaviour
     {
         if (waypointIndex <= waypoints.Length - 1)
         {
+            // Getting the position of the waypoint
             Vector3 wayPointPosition = waypoints[waypointIndex].transform.position;
+            // Getting only the x and z position of the waypoint, keeping the y position of the player
             wayPointPosition.Set(wayPointPosition.x, transform.position.y, wayPointPosition.z);
+            // Moving the player to the waypoint
             transform.position = Vector3.MoveTowards(transform.position, wayPointPosition, moveSpeed * Time.deltaTime);
+
 
             if (transform.position.x == waypoints[waypointIndex].transform.position.x && transform.position.z == waypoints[waypointIndex].transform.position.z)
             {

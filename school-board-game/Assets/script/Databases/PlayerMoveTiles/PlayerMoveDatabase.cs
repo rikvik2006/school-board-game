@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMoveDatabase : MonoBehaviour
 {
-    public List<PlayerMoveTiles> playerMoveTiles = new List<PlayerMoveTiles>(4);
+    public List<PlayerMoveTiles> playerMoveTiles = new List<PlayerMoveTiles>();
 
     public void AddPlayerMoveTiles(string playerName, int tilesToMove, string currentWord, string definition)
     {
