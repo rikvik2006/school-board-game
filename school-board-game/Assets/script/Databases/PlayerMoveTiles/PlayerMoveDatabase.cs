@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMoveDatabase : MonoBehaviour
 {
-    public List<PlayerMoveTiles> playerMoveTiles = new List<PlayerMoveTiles>();
+    [SerializeField]
+    public List<PlayerMoveTiles> playerMoveTilesList = new List<PlayerMoveTiles>();
 
     public void AddPlayerMoveTiles(string playerName, int tilesToMove, string currentWord, string definition)
     {
@@ -13,6 +14,6 @@ public class PlayerMoveDatabase : MonoBehaviour
         playerMoveTiles.tilesToMove = tilesToMove;
         playerMoveTiles.currentWord = currentWord;
         playerMoveTiles.definition = definition;
-        this.playerMoveTiles.Add(playerMoveTiles);
+        this.playerMoveTilesList.Add(playerMoveTiles);
     }
 }

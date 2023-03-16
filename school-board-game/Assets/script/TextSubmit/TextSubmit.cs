@@ -43,6 +43,8 @@ public class TextSubmit : MonoBehaviour
         if (submitFormStatus == 1)
         {
             StartCoroutine(CheckTheWordInDictionary("https://api.dictionaryapi.dev/api/v2/entries/en/" + inputField.text, OnDictionaryCheckCompleted));
+            HideReactangle();
+            inputField.text = "";
         }
     }
 
