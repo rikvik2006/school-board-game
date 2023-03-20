@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Newtonsoft.Json;
 
 public class GameControl : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class GameControl : MonoBehaviour
     private int player3TilesToMove = 0;
     private int player4TilesToMove = 0;
 
-    public List<PlayerMoveTiles> palyerMoveTilesCopy;
+    public List<PlayerMoveTiles> palyerMoveTilesCopy = new List<PlayerMoveTiles>();
 
     // Tiles to move for player: 
     private PlayerMoveTiles player1MoveTiles;
@@ -57,7 +58,7 @@ public class GameControl : MonoBehaviour
         }
 
         // IMPORTANT: Player 1 script
-        player1MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player1");
+        player1MoveTiles = palyerMoveTilesCopy.Find((x) => x.playerName == "Player1");
         if (player1MoveTiles != null)
         {
             player1TilesToMove = player1MoveTiles.tilesToMove;
@@ -86,7 +87,7 @@ public class GameControl : MonoBehaviour
         }
 
         // IMPORTANT: Player 2 script
-        player2MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player2");
+        player2MoveTiles = palyerMoveTilesCopy.Find((x) => x.playerName == "Player2");
         if (player2MoveTiles != null)
         {
             player2TilesToMove = player2MoveTiles.tilesToMove;
@@ -114,7 +115,7 @@ public class GameControl : MonoBehaviour
         }
 
         // IMPORTANT: Player 3 script
-        player3MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player3");
+        player3MoveTiles = palyerMoveTilesCopy.Find((x) => x.playerName == "Player3");
         if (player3MoveTiles != null)
         {
             player3TilesToMove = player3MoveTiles.tilesToMove;
@@ -142,7 +143,7 @@ public class GameControl : MonoBehaviour
         }
 
         // IMPORTANT: Player 4 script
-        player4MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player4");
+        player4MoveTiles = palyerMoveTilesCopy.Find((x) => x.playerName == "Player4");
         if (player4MoveTiles != null)
         {
             player4TilesToMove = player4MoveTiles.tilesToMove;
@@ -187,17 +188,20 @@ public class GameControl : MonoBehaviour
         //         break;
         // }
 
-        palyerMoveTilesCopy = playerMoveDatabase.playerMoveTilesList;
+        palyerMoveTilesCopy = new List<PlayerMoveTiles>();
+
+        foreach (PlayerMoveTiles tiles in playerMoveDatabase.playerMoveTilesList)
+        {
+            Debug.Log(tiles.playerName + ": " + tiles.tilesToMove);
+            palyerMoveTilesCopy.Add(tiles);
+        }
+
         playerMoveDatabase.ClearPlayerMoveTilesList();  // Clear the list and add an element for initialisation
 
+        string listMovesJson = JsonUtility.ToJson(palyerMoveTilesCopy);
 
-        player1MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player1");
-        if (player1MoveTiles != null)
-        {
-            player1TilesToMove = player1MoveTiles.tilesToMove;
-            Debug.Log("Tiles to move: " + player1TilesToMove);
-            player1.GetComponent<FollowThePaht>().waypointIndex = player1TilesToMove;
-        }
+        Debug.Log(listMovesJson);
+
         player1.GetComponent<FollowThePaht>().moveallowed = true;
 
         // player2.GetComponent<FollowThePaht>().moveallowed = true;

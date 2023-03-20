@@ -14,6 +14,8 @@ public class TextSubmit : MonoBehaviour
     [Space]
     [SerializeField]
     PlayerMoveDatabase playerMoveDatabase;
+
+    // BUG: This is not working
     [HideInInspector] public string playerName;
     private float submitFormStatus = 0;
 
@@ -63,7 +65,8 @@ public class TextSubmit : MonoBehaviour
             int randomMeaningObj = UnityEngine.Random.Range(0, dictionaryEntry[0].meanings.Count);
             int randomMeaningDefinitionsObj = UnityEngine.Random.Range(0, dictionaryEntry[0].meanings[randomMeaningObj].definitions.Count);
 
-            playerMoveDatabase.AddPlayerMoveTiles(playerName, inputField.text.Length, inputField.text, dictionaryEntry[0].meanings[randomMeaningObj].definitions[randomMeaningDefinitionsObj].definition);
+            Debug.Log("Added word for player: " + playerNameText.text + " with " + inputField.text.Length + " tiles");
+            playerMoveDatabase.AddPlayerMoveTiles(playerNameText.text, inputField.text.Length, inputField.text, dictionaryEntry[0].meanings[randomMeaningObj].definitions[randomMeaningDefinitionsObj].definition);
         }
         inputField.text = "";
     }
