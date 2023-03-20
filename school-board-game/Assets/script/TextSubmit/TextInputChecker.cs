@@ -22,7 +22,10 @@ public class TextInputChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerName = textSubmit.playerName;
+        if (textSubmit != null)
+        {
+            playerName = textSubmit.playerName;
+        }
     }
 
     private void CheckInput(string newValue)
@@ -30,8 +33,8 @@ public class TextInputChecker : MonoBehaviour
         if (inputField.text.Length > 0)
         {
             List<string> letters = wordDatabase.GetLettersForPlayer(playerName);
-            Debug.Log("Player name: " + playerName);
-            Debug.Log("New Value: " + newValue);
+            // Debug.Log("Player name: " + playerName);
+            // Debug.Log("New Value: " + newValue);
 
             if (letters == null || letters.Count <= 0)
             {

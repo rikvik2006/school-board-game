@@ -44,7 +44,6 @@ public class TextSubmit : MonoBehaviour
         {
             StartCoroutine(CheckTheWordInDictionary("https://api.dictionaryapi.dev/api/v2/entries/en/" + inputField.text, OnDictionaryCheckCompleted));
             HideReactangle();
-            inputField.text = "";
         }
     }
 
@@ -52,7 +51,8 @@ public class TextSubmit : MonoBehaviour
     {
         if (dictionaryEntry[0].Equals(null)) return;
 
-        if (dictionaryEntry[0].word != inputField.text)
+        // Debug.Log("Word from api: " + dictionaryEntry[0].word);
+        if (dictionaryEntry[0].word != inputField.text.ToLower())
         {
             Debug.Log("Word not found");
             return;
@@ -63,9 +63,9 @@ public class TextSubmit : MonoBehaviour
             int randomMeaningObj = UnityEngine.Random.Range(0, dictionaryEntry[0].meanings.Count);
             int randomMeaningDefinitionsObj = UnityEngine.Random.Range(0, dictionaryEntry[0].meanings[randomMeaningObj].definitions.Count);
 
-            Debug.Log("Word found");
             playerMoveDatabase.AddPlayerMoveTiles(playerName, inputField.text.Length, inputField.text, dictionaryEntry[0].meanings[randomMeaningObj].definitions[randomMeaningDefinitionsObj].definition);
         }
+        inputField.text = "";
     }
 
     IEnumerator ShowReactangleCoroutine()

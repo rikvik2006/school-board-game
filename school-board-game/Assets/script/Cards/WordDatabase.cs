@@ -30,7 +30,7 @@ public class WordDatabase : MonoBehaviour
         List<string> letters = new List<string>();
         foreach (WordAssigner wordAssigner in wordsAssingers)
         {
-            Debug.Log("wordAssigner.forPlayer: " + wordAssigner.forPlayer);
+            // Debug.Log("wordAssigner.forPlayer: " + wordAssigner.forPlayer);
             if (wordAssigner.forPlayer == player)
             {
                 letters.Add(wordAssigner.letter);

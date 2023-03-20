@@ -22,6 +22,13 @@ public class GameControl : MonoBehaviour
     private int player3TilesToMove = 0;
     private int player4TilesToMove = 0;
 
+    public List<PlayerMoveTiles> palyerMoveTilesCopy;
+
+    // Tiles to move for player: 
+    private PlayerMoveTiles player1MoveTiles;
+    private PlayerMoveTiles player2MoveTiles;
+    private PlayerMoveTiles player3MoveTiles;
+    private PlayerMoveTiles player4MoveTiles;
 
     // Start is called before the first frame update
     void Start()
@@ -36,17 +43,28 @@ public class GameControl : MonoBehaviour
         player2.GetComponent<FollowThePaht>().moveallowed = false;
         player3.GetComponent<FollowThePaht>().moveallowed = false;
         player4.GetComponent<FollowThePaht>().moveallowed = false;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        // IMPORTANT: Player 1 script
-        if (playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player1") != null)
+        if (playerMoveDatabase.playerMoveTilesList.Count >= 5)
         {
+            // TODO: Start to move the palyer if the list have 5 elements (this means that all player have aswered the qeustion) or the timer is over
+            MovePlayer();
 
+            // TODO: Start moving the camera
         }
+
+        // IMPORTANT: Player 1 script
+        player1MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player1");
+        if (player1MoveTiles != null)
+        {
+            player1TilesToMove = player1MoveTiles.tilesToMove;
+            Debug.Log("Tiles to move: " + player1TilesToMove);
+            player1.GetComponent<FollowThePaht>().waypointIndex = player1TilesToMove;
+        }
+
         if (player1.GetComponent<FollowThePaht>().waypointIndex > player1StartWaypoint + player1TilesToMove)
         {
             player1.GetComponent<FollowThePaht>().moveallowed = false;
@@ -68,7 +86,13 @@ public class GameControl : MonoBehaviour
         }
 
         // IMPORTANT: Player 2 script
-        player2TilesToMove = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player2").tilesToMove;
+        player2MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player2");
+        if (player2MoveTiles != null)
+        {
+            player2TilesToMove = player2MoveTiles.tilesToMove;
+            player2.GetComponent<FollowThePaht>().waypointIndex = player2TilesToMove;
+        }
+
         if (player2.GetComponent<FollowThePaht>().waypointIndex > player2StartWaypoint + player2TilesToMove)
         {
             player2.GetComponent<FollowThePaht>().moveallowed = false;
@@ -90,7 +114,13 @@ public class GameControl : MonoBehaviour
         }
 
         // IMPORTANT: Player 3 script
-        player3TilesToMove = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player3").tilesToMove;
+        player3MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player3");
+        if (player3MoveTiles != null)
+        {
+            player3TilesToMove = player3MoveTiles.tilesToMove;
+            player3.GetComponent<FollowThePaht>().waypointIndex = player3TilesToMove;
+        }
+
         if (player3.GetComponent<FollowThePaht>().waypointIndex > player3StartWaypoint + player3TilesToMove)
         {
             player3.GetComponent<FollowThePaht>().moveallowed = false;
@@ -112,7 +142,13 @@ public class GameControl : MonoBehaviour
         }
 
         // IMPORTANT: Player 4 script
-        player4TilesToMove = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player4").tilesToMove;
+        player4MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player4");
+        if (player4MoveTiles != null)
+        {
+            player4TilesToMove = player4MoveTiles.tilesToMove;
+            player4.GetComponent<FollowThePaht>().waypointIndex = player4TilesToMove;
+        }
+
         if (player4.GetComponent<FollowThePaht>().waypointIndex > player4StartWaypoint + player4TilesToMove)
         {
             player4.GetComponent<FollowThePaht>().moveallowed = false;
@@ -130,13 +166,6 @@ public class GameControl : MonoBehaviour
             // player4MoveText.gameObject.SetActive(false);
             whoWinsText.GetComponent<Text>().text = "Player 4 Wins!";
             gameOver = true;
-        }
-
-        if (playerMoveDatabase.playerMoveTilesList.Count >= 4)
-        {
-            // TODO: Start to move the palyer if the list have 4 elements (this means that all player have aswered the qeustion) or the timer is over
-            MovePlayer();
-
         }
     }
 
@@ -158,10 +187,17 @@ public class GameControl : MonoBehaviour
         //         break;
         // }
 
-        List<PlayerMoveTiles> palyerMOveTilesCopy = playerMoveDatabase.playerMoveTilesList;
-        playerMoveDatabase.playerMoveTilesList.Clear();
+        palyerMoveTilesCopy = playerMoveDatabase.playerMoveTilesList;
+        playerMoveDatabase.ClearPlayerMoveTilesList();  // Clear the list and add an element for initialisation
 
 
+        player1MoveTiles = playerMoveDatabase.playerMoveTilesList.Find((x) => x.playerName == "Player1");
+        if (player1MoveTiles != null)
+        {
+            player1TilesToMove = player1MoveTiles.tilesToMove;
+            Debug.Log("Tiles to move: " + player1TilesToMove);
+            player1.GetComponent<FollowThePaht>().waypointIndex = player1TilesToMove;
+        }
         player1.GetComponent<FollowThePaht>().moveallowed = true;
 
         // player2.GetComponent<FollowThePaht>().moveallowed = true;
