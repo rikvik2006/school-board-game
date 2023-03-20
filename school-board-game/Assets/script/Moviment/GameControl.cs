@@ -66,14 +66,16 @@ public class GameControl : MonoBehaviour
             player1.GetComponent<FollowThePaht>().waypointIndex = player1TilesToMove;
         }
 
+        Debug.Log("CALCOLI PER L'AVVIO: " + player1.GetComponent<FollowThePaht>().waypointIndex + " " + player1StartWaypoint + " " + player1TilesToMove + " " + (player1StartWaypoint + player1TilesToMove));
         if (player1.GetComponent<FollowThePaht>().waypointIndex > player1StartWaypoint + player1TilesToMove)
         {
             player1.GetComponent<FollowThePaht>().moveallowed = false;
             // player1MoveText.gameObject.SetActive(false);
             // player2MoveText.gameObject.SetActive(true);
-            player1StartWaypoint = player1.GetComponent<FollowThePaht>().waypointIndex - 1;
+            player1StartWaypoint = player1.GetComponent<FollowThePaht>().waypointIndex;
 
             // Start the next player
+            Debug.Log("STARTING THE NEXT PLAYER");
             player2.GetComponent<FollowThePaht>().moveallowed = true;
         }
 
@@ -99,7 +101,7 @@ public class GameControl : MonoBehaviour
             player2.GetComponent<FollowThePaht>().moveallowed = false;
             // player2MoveText.gameObject.SetActive(false);
             // player2MoveText.gameObject.SetActive(true);
-            player2StartWaypoint = player2.GetComponent<FollowThePaht>().waypointIndex - 1;
+            player2StartWaypoint = player2.GetComponent<FollowThePaht>().waypointIndex;
 
             // Start the next player
             player3.GetComponent<FollowThePaht>().moveallowed = true;
@@ -127,7 +129,7 @@ public class GameControl : MonoBehaviour
             player3.GetComponent<FollowThePaht>().moveallowed = false;
             // player3MoveText.gameObject.SetActive(false);
             // player3MoveText.gameObject.SetActive(true);
-            player3StartWaypoint = player3.GetComponent<FollowThePaht>().waypointIndex - 1;
+            player3StartWaypoint = player3.GetComponent<FollowThePaht>().waypointIndex;
 
             // Start the next player
             player4.GetComponent<FollowThePaht>().moveallowed = true;
@@ -155,7 +157,7 @@ public class GameControl : MonoBehaviour
             player4.GetComponent<FollowThePaht>().moveallowed = false;
             // player4MoveText.gameObject.SetActive(false);
             // player4MoveText.gameObject.SetActive(true);
-            player4StartWaypoint = player4.GetComponent<FollowThePaht>().waypointIndex - 1;
+            player4StartWaypoint = player4.GetComponent<FollowThePaht>().waypointIndex;
 
             // This player is the last one to move, so we can start the next round
         }
