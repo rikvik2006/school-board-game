@@ -30,6 +30,7 @@ public class GameControl : MonoBehaviour
     private PlayerMoveTiles player2MoveTiles;
     private PlayerMoveTiles player3MoveTiles;
     private PlayerMoveTiles player4MoveTiles;
+    private bool movePhase = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,7 @@ public class GameControl : MonoBehaviour
         {
             // TODO: Start to move the palyer if the list have 5 elements (this means that all player have aswered the qeustion) or the timer is over
             MovePlayer();
-
+            movePhase = true;
             // TODO: Start moving the camera
         }
 
@@ -63,7 +64,7 @@ public class GameControl : MonoBehaviour
         {
             player1TilesToMove = player1MoveTiles.tilesToMove;
             Debug.Log("Tiles to move: " + player1TilesToMove);
-            player1.GetComponent<FollowThePaht>().waypointIndex = player1TilesToMove;
+            // player1.GetComponent<FollowThePaht>().waypointIndex = player1TilesToMove;
         }
 
         Debug.Log("CALCOLI PER L'AVVIO: " + player1.GetComponent<FollowThePaht>().waypointIndex + " " + player1StartWaypoint + " " + player1TilesToMove + " " + (player1StartWaypoint + player1TilesToMove));
@@ -93,7 +94,7 @@ public class GameControl : MonoBehaviour
         if (player2MoveTiles != null)
         {
             player2TilesToMove = player2MoveTiles.tilesToMove;
-            player2.GetComponent<FollowThePaht>().waypointIndex = player2TilesToMove;
+            // player2.GetComponent<FollowThePaht>().waypointIndex = player2TilesToMove;
         }
 
         if (player2.GetComponent<FollowThePaht>().waypointIndex > player2StartWaypoint + player2TilesToMove)
@@ -121,7 +122,7 @@ public class GameControl : MonoBehaviour
         if (player3MoveTiles != null)
         {
             player3TilesToMove = player3MoveTiles.tilesToMove;
-            player3.GetComponent<FollowThePaht>().waypointIndex = player3TilesToMove;
+            // player3.GetComponent<FollowThePaht>().waypointIndex = player3TilesToMove;
         }
 
         if (player3.GetComponent<FollowThePaht>().waypointIndex > player3StartWaypoint + player3TilesToMove)
@@ -149,7 +150,7 @@ public class GameControl : MonoBehaviour
         if (player4MoveTiles != null)
         {
             player4TilesToMove = player4MoveTiles.tilesToMove;
-            player4.GetComponent<FollowThePaht>().waypointIndex = player4TilesToMove;
+            // player4.GetComponent<FollowThePaht>().waypointIndex = player4TilesToMove;
         }
 
         if (player4.GetComponent<FollowThePaht>().waypointIndex > player4StartWaypoint + player4TilesToMove)
@@ -160,6 +161,8 @@ public class GameControl : MonoBehaviour
             player4StartWaypoint = player4.GetComponent<FollowThePaht>().waypointIndex;
 
             // This player is the last one to move, so we can start the next round
+            // Stop the movePhase
+            movePhase = false;
         }
 
         if (player4.GetComponent<FollowThePaht>().waypointIndex == player4.GetComponent<FollowThePaht>().waypoints.Length)
