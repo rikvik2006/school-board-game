@@ -11,6 +11,10 @@ public class CardsInvetoryManager : MonoBehaviour
     public WordDatabase wordDatabase;
     public TMP_Text namePlayerText;  // Correct type for TextMeshProUGUI is TMP_Text, i think is a general type for all textmeshpro
     public GameObject noCardInInventory;
+    [SerializeField]
+    private PlayerMoveDatabase playerMoveDatabase;
+    [SerializeField]
+    private PopupWindow popupWindow;
 
     void Start()
     {
@@ -29,6 +33,14 @@ public class CardsInvetoryManager : MonoBehaviour
 
     public void AddCardForPlayer(string namePlayer)
     {
+        PlayerMoveTiles playerMoveTiles = playerMoveDatabase.playerMoveTilesList.Find(x => x.playerName == namePlayer);
+
+        if (playerMoveTiles != null)
+        {
+            Debug.Log("Arledy sented a word");
+            popupWindow.AddToQueue("You have already sented a word");
+            return;
+        }
         if (inventory.activeSelf == false)
         {
             inventory.SetActive(true);

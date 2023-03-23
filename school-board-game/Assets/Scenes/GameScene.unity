@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 16468344}
   - component: {fileID: 16468343}
   - component: {fileID: 16468342}
+  - component: {fileID: 16468346}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -255,7 +256,7 @@ RectTransform:
   - {fileID: 2008372671}
   - {fileID: 2138230705}
   - {fileID: 2002522141}
-  - {fileID: 1465543336}
+  - {fileID: 759120136}
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -264,6 +265,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &16468346
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16468341}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 117b391fe3d85aa4ca686578c74b0b8b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &45190231
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,6 +2086,7 @@ MonoBehaviour:
   submitForm: {fileID: 2138230705}
   playerNameText: {fileID: 626705300}
   inputField: {fileID: 718892877}
+  popupWindow: {fileID: 0}
   playerMoveDatabase: {fileID: 618141628}
   playerName: 
 --- !u!1 &457481163
@@ -2164,7 +2186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0000081062}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0.000014305115}
   m_SizeDelta: {x: 100, y: 47.357}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &487795290
@@ -3710,6 +3732,53 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 54934976}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &759120134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759120136}
+  - component: {fileID: 759120135}
+  m_Layer: 0
+  m_Name: PopupWindow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &759120135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759120134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7a2c288da436f49af3dcc099e92818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupText: {fileID: 487795290}
+  popupAnimator: {fileID: 16468346}
+--- !u!4 &759120136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759120134}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -52.17572, y: -19.142313, z: -4.7642136}
+  m_LocalScale: {x: 0.53655267, y: 0.53655267, z: 0.53655267}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1465543336}
+  m_Father: {fileID: 16468345}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &762453034
@@ -6614,19 +6683,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465543335}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 8.879303}
+  m_LocalScale: {x: 1.86375, y: 1.86375, z: 1.86375}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1402985319}
   - {fileID: 182063237}
-  m_Father: {fileID: 16468345}
+  m_Father: {fileID: 759120136}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 39.600002}
+  m_AnchoredPosition: {x: 97.24248, y: 109.481026}
   m_SizeDelta: {x: 100, y: 67.2063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1473985036
@@ -9696,6 +9765,7 @@ MonoBehaviour:
   submitForm: {fileID: 2138230705}
   playerNameText: {fileID: 626705300}
   inputField: {fileID: 718892877}
+  popupWindow: {fileID: 759120135}
   playerMoveDatabase: {fileID: 0}
   playerName: 
 --- !u!1 &2125637115 stripped
