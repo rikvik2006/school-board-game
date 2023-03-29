@@ -16,6 +16,9 @@ public class CardsInvetoryManager : MonoBehaviour
     [SerializeField]
     private PopupWindow popupWindow;
 
+    [SerializeField]
+    private GameControl gameControl;
+
     void Start()
     {
         inventory.SetActive(false);
@@ -35,12 +38,19 @@ public class CardsInvetoryManager : MonoBehaviour
     {
         PlayerMoveTiles playerMoveTiles = playerMoveDatabase.playerMoveTilesList.Find(x => x.playerName == namePlayer);
 
+        if (gameControl.movePhase == true)
+        {
+            popupWindow.AddToQueue("You can't send a word in move phase");
+            return;
+        }
+
         if (playerMoveTiles != null)
         {
             Debug.Log("Arledy sented a word");
             popupWindow.AddToQueue("You have already sented a word");
             return;
         }
+
         if (inventory.activeSelf == false)
         {
             inventory.SetActive(true);

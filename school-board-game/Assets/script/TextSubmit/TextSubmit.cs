@@ -11,13 +11,17 @@ public class TextSubmit : MonoBehaviour
     public RectTransform submitForm;
     public TextMeshProUGUI playerNameText;
     public TMP_InputField inputField;
+    public PopupWindow popupWindow;
     [Space]
     [SerializeField]
-    PlayerMoveDatabase playerMoveDatabase;
+    private PlayerMoveDatabase playerMoveDatabase;
+    [SerializeField]
+    private GameObject inventory;
 
     // BUG: This is not working
     [HideInInspector] public string playerName;
     private float submitFormStatus = 0;
+
 
     public void ShowReactangle()
     {
@@ -46,6 +50,9 @@ public class TextSubmit : MonoBehaviour
         {
             StartCoroutine(CheckTheWordInDictionary("https://api.dictionaryapi.dev/api/v2/entries/en/" + inputField.text, OnDictionaryCheckCompleted));
             HideReactangle();
+            // StartCoroutine(DisableInventory());
+            // CloseInvetory.CloseInventory();
+            // popupWindow.AddToQueue("Word submitted");
         }
     }
 
@@ -119,6 +126,13 @@ public class TextSubmit : MonoBehaviour
             }
 
         }
+    }
+
+    IEnumerator DisableInventory()
+    {
+        yield return new WaitForSeconds(0.5f);
+        inventory.SetActive(false);
+        yield break;
     }
 
 }
