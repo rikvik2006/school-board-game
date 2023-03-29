@@ -30,7 +30,7 @@ public class GameControl : MonoBehaviour
     private PlayerMoveTiles player2MoveTiles;
     private PlayerMoveTiles player3MoveTiles;
     private PlayerMoveTiles player4MoveTiles;
-    private bool movePhase = false;
+    public bool movePhase = false;
 
     // Start is called before the first frame update
     void Start()
