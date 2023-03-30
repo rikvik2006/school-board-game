@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 58
+  controlID: 68
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 563
     height: 1299
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 59
+  controlID: 69
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -271,8 +271,8 @@ MonoBehaviour:
     y: 0
     width: 1493
     height: 842
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -391,7 +391,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 24062
+  m_LastSelectedObjectID: -24178
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -498,22 +498,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/GeneralAsset/FBX/Stanza/Materials
+    - Assets/script/Imprevisti
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/GeneralAsset/FBX/Stanza/Materials
+  - Assets/script/Imprevisti
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Unity\Projects\school-board-game\school-board-game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: a2650000
-    m_LastClickedID: 26018
-    m_ExpandedIDs: 00000000126500001465000016650000186500001a65000078650000a4650000
+    scrollPos: {x: 0, y: 288}
+    m_SelectedIDs: ae6c0000
+    m_LastClickedID: 27822
+    m_ExpandedIDs: 00000000126500001465000016650000186500001a650000786500009e650000a4650000ae6c0000be6d0000c26d0000d46d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300000000000058690000f45a0000067800002863000050b3000058610000685f0000745f00007e610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -585,7 +585,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 3}
+      m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -671,21 +671,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: eefaffff
+      m_ExpandedIDs: 8ea1ffffeefaffffc25c0000d65c0000505d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: CardWayPoint (7)
+        m_OriginalName: CardWayPoint (7)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 23934
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -953,9 +953,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 113.44243, y: -54.12474, z: 94.12399}
+    m_Target: {x: -7.552741, y: -4.5573015, z: -2.4905815}
     speed: 2
-    m_Value: {x: 113.44243, y: -54.12474, z: 94.12399}
+    m_Value: {x: -7.552741, y: -4.5573015, z: -2.4905815}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1001,13 +1001,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.2712476, y: 0.20589587, z: -0.05951815, w: 0.9383508}
+    m_Target: {x: 0.31574252, y: 0.059723627, z: -0.019922715, w: 0.94676304}
     speed: 2
-    m_Value: {x: -0.2712476, y: -0.20589587, z: 0.05951815, w: -0.9383508}
+    m_Value: {x: 0.31573978, y: 0.059723105, z: -0.019922541, w: 0.9467548}
   m_Size:
-    m_Target: 638.24365
+    m_Target: 16.23258
     speed: 2
-    m_Value: 610.75946
+    m_Value: 16.997467
   m_Ortho:
     m_Target: 0
     speed: 2
