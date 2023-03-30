@@ -4,17 +4,36 @@ using UnityEngine;
 
 public class CheckImprevistoTiles : MonoBehaviour
 {
-    // public int[] imporevistiTiles = new int[14];
-    // // Created a list with the intdex and initialized it with the values of the array
+    [HideInInspector]
     public List<int> imporevistiTiles = new List<int> { 4, 6, 9, 10, 13, 15, 18, 19, 22, 24, 27, 28, 30, 31 };
+    public ImprevistiDatabase imprevistiDatabase;
+    public ImprevistoManager imprevistoManager;
+    private FollowThePaht followThePathScript;
+
+
     void Start()
     {
-        
+        followThePathScript = gameObject.GetComponent<FollowThePaht>();
     }
 
     // Update is called once per frame
+
     void Update()
     {
 
+        if (imporevistiTiles.Contains(followThePathScript.waypointIndex))
+        {
+            // TODO: Controlla se il player ha un imprevisto assegnato, se si, esci
+            ImprevistoDatabaseDocument imprevistoAssegnato = imprevistiDatabase.imporevistiAssegnati.Find((imprevisto) => imprevisto.forPlayer == gameObject.name);
+            if (imprevistoAssegnato != null)
+            {
+                return;
+            }
+
+            // TODO: Prendi la lista di Imprevisti dal file ImporevistoManager
+            Imprevisto imprevisto = imprevistoManager.GetRandomImporevisto();
+            Debug.Log("Imprevisto: " + imprevisto.name + ", For Player: " + gameObject.name);
+            imprevistiDatabase.AddImprevistoAssegnato(imprevisto, gameObject.name);
+        }
     }
 }
