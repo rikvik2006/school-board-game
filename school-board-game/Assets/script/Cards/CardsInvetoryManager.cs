@@ -18,9 +18,15 @@ public class CardsInvetoryManager : MonoBehaviour
 
     [SerializeField]
     private GameControl gameControl;
-
+    [SerializeField]
+    private GameObject imprevistoCard;
+    private ImprevistoDisplay imprevistoDisplay;
+    [SerializeField]
+    // ImprevistiDatabase è una clasese che serve per contenere gli imprerivsti assegnati hai giocatori quando vanno sopra a una casella imprevisto.
+    private ImprevistiDatabase imprevistiDatabase;
     void Start()
     {
+        imprevistoCard.SetActive(false);
         inventory.SetActive(false);
         foreach (GameObject card in cards)
         {
@@ -31,7 +37,14 @@ public class CardsInvetoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (gameControl.movePhase == true)
+        {
+            inventory.SetActive(false);
+            foreach (GameObject card in cards)
+            {
+                card.SetActive(false);
+            }
+        }
     }
 
     public void AddCardForPlayer(string namePlayer)
@@ -96,6 +109,24 @@ public class CardsInvetoryManager : MonoBehaviour
             {
                 card.SetActive(false);
             }
+        }
+
+        if (imprevistoCard.activeSelf == false)
+        {
+            imprevistoCard.SetActive(true);
+            imprevistoDisplay = imprevistoCard.GetComponent<ImprevistoDisplay>();
+            ImprevistoDatabaseDocument imprevistoAssegnato = imprevistiDatabase.imporevistiAssegnati.Find((imprevisto) => imprevisto.forPlayer == namePlayer);
+
+            // Prediamo solo i dati che ci interessano, in modo tale da convertire il type ImprevistoDatabaseDocument in Imprevisto
+            Imprevisto imprevisto = new Imprevisto();
+            imprevisto.name = imprevistoAssegnato.name;
+            imprevisto.description = imprevistoAssegnato.description;
+
+            imprevistoDisplay.SetImprevisto(imprevisto);
+        }
+        else
+        {
+            imprevistoCard.SetActive(false);
         }
     }
 }

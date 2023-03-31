@@ -9,7 +9,7 @@ public class CheckImprevistoTiles : MonoBehaviour
     public ImprevistiDatabase imprevistiDatabase;
     public ImprevistoManager imprevistoManager;
     private FollowThePaht followThePathScript;
-
+    public GameControl gameControl;
 
     void Start()
     {
@@ -20,8 +20,12 @@ public class CheckImprevistoTiles : MonoBehaviour
 
     void Update()
     {
+        if (gameControl.movePhase == true)
+        {
+            return;
+        }
 
-        if (imporevistiTiles.Contains(followThePathScript.waypointIndex))
+        if (imporevistiTiles.Exists((tile) => tile == followThePathScript.waypointIndex))
         {
             // TODO: Controlla se il player ha un imprevisto assegnato, se si, esci
             ImprevistoDatabaseDocument imprevistoAssegnato = imprevistiDatabase.imporevistiAssegnati.Find((imprevisto) => imprevisto.forPlayer == gameObject.name);

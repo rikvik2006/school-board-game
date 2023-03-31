@@ -13,6 +13,20 @@ public class ImprevistoDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Imprevisto imprevistoNull = new Imprevisto();
+        imprevistoNull.name = "All is fine";
+        // Traducimi in inglse questo: Non ci sono imprevisti, tutto è traquillo.
+        imprevistoNull.description = "There are no chances, everything is quiet.";
+        this.imprevisto = imprevistoNull;
+    }
+
+    public void SetImprevisto(Imprevisto imprevisto)
+    {
+        this.imprevisto = imprevisto;
+    }
+
+    private void Update()
+    {
         titleText.text = imprevisto.name;
         descriptionText.text = imprevisto.description;
     }
