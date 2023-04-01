@@ -21,6 +21,7 @@ public class TextSubmit : MonoBehaviour
     // BUG: This is not working
     [HideInInspector] public string playerName;
     private float submitFormStatus = 0;
+    public GameObject imprevistoCard;
 
 
     public void ShowReactangle()
@@ -51,7 +52,6 @@ public class TextSubmit : MonoBehaviour
         {
             Debug.Log("In the submit form if statement");
             StartCoroutine(CheckTheWordInDictionary("https://api.dictionaryapi.dev/api/v2/entries/en/" + inputField.text, OnDictionaryCheckCompleted));
-            HideReactangle("submit");
             // StartCoroutine(DisableInventory());
             // CloseInvetory.CloseInventory();
             // popupWindow.AddToQueue("Word submitted");
@@ -114,6 +114,7 @@ public class TextSubmit : MonoBehaviour
         if (state == "submit")
         {
             inventory.gameObject.SetActive(false);
+            imprevistoCard.SetActive(false);
         }
     }
 
@@ -135,6 +136,8 @@ public class TextSubmit : MonoBehaviour
                 Debug.Log(response.downloadHandler.text);
                 DictionaryEntry[] stringfyJson = JsonConvert.DeserializeObject<DictionaryEntry[]>(response.downloadHandler.text);
                 callback(stringfyJson);
+                // Disattiviamo l'inventario e la carta imprevisto
+                HideReactangle("submit");
                 yield return stringfyJson;
             }
 
