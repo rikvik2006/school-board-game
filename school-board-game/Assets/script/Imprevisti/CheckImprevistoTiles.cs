@@ -25,6 +25,7 @@ public class CheckImprevistoTiles : MonoBehaviour
             return;
         }
 
+        Debug.Log("Waypoint Index: " + followThePathScript.waypointIndex + " For player: " + gameObject.name);
         if (imporevistiTiles.Exists((tile) => tile == followThePathScript.waypointIndex))
         {
             // TODO: Controlla se il player ha un imprevisto assegnato, se si, esci

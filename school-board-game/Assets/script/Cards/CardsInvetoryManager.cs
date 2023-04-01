@@ -37,19 +37,17 @@ public class CardsInvetoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameControl.movePhase == true)
-        {
-            inventory.SetActive(false);
-            foreach (GameObject card in cards)
-            {
-                card.SetActive(false);
-            }
-        }
     }
 
     public void AddCardForPlayer(string namePlayer)
     {
         PlayerMoveTiles playerMoveTiles = playerMoveDatabase.playerMoveTilesList.Find(x => x.playerName == namePlayer);
+
+        if (gameControl.gameIsStarted != true)
+        {
+            popupWindow.AddToQueue("Game isn't started yet");
+            return;
+        }
 
         if (gameControl.movePhase == true)
         {
@@ -63,6 +61,8 @@ public class CardsInvetoryManager : MonoBehaviour
             popupWindow.AddToQueue("You have already sented a word");
             return;
         }
+
+        ShowImprevistoCard(namePlayer);
 
         if (inventory.activeSelf == false)
         {
@@ -110,15 +110,29 @@ public class CardsInvetoryManager : MonoBehaviour
                 card.SetActive(false);
             }
         }
+    }
 
+    private void ShowImprevistoCard(string namePlayer)
+    {
         if (imprevistoCard.activeSelf == false)
         {
             imprevistoCard.SetActive(true);
             imprevistoDisplay = imprevistoCard.GetComponent<ImprevistoDisplay>();
             ImprevistoDatabaseDocument imprevistoAssegnato = imprevistiDatabase.imporevistiAssegnati.Find((imprevisto) => imprevisto.forPlayer == namePlayer);
 
+            // Controlliamo se il giocatore non ha imprevisti assegnati, in tal caso settiamo un imprevisto di default
+            if (imprevistoAssegnato == null)
+            {
+                Imprevisto noImprevisto = ScriptableObject.CreateInstance<Imprevisto>();
+                noImprevisto.name = "All is fine";
+                noImprevisto.description = "There are no chances, everything is quiet.";
+
+                imprevistoDisplay.SetImprevisto(noImprevisto);
+                return;
+            }
+
             // Prediamo solo i dati che ci interessano, in modo tale da convertire il type ImprevistoDatabaseDocument in Imprevisto
-            Imprevisto imprevisto = new Imprevisto();
+            Imprevisto imprevisto = ScriptableObject.CreateInstance<Imprevisto>();
             imprevisto.name = imprevistoAssegnato.name;
             imprevisto.description = imprevistoAssegnato.description;
 
@@ -127,6 +141,21 @@ public class CardsInvetoryManager : MonoBehaviour
         else
         {
             imprevistoCard.SetActive(false);
+            Debug.Log("Card imprevisto disattivata");
+        }
+    }
+
+    IEnumerator DisableInventory()
+    {
+        yield return new WaitForSeconds(3);
+
+        if (gameControl.movePhase == true)
+        {
+            inventory.SetActive(false);
+            foreach (GameObject card in cards)
+            {
+                card.SetActive(false);
+            }
         }
     }
 }

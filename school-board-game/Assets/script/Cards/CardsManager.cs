@@ -11,6 +11,7 @@ public class CardsManager : MonoBehaviour
     public GameObject checkYourCardsText;
     public TextMeshProUGUI countDownText;
 
+    private GameControl gameControl;
     private CardsGenerate cardsGeneratorPlayer1, cardsGeneratorPlayer2, cardsGeneratorPlayer3, cardsGeneratorPlayer4;
     private int countDown = 3;
     private int countDownToCheckCardsSeconds = 0;
@@ -18,6 +19,7 @@ public class CardsManager : MonoBehaviour
 
     private void Start()
     {
+        gameControl = gameObject.GetComponent<GameControl>();
         countDownGB.SetActive(false);
         checkYourCardsText.SetActive(false);
         cardsGeneratorPlayer1 = GameObject.Find("Player1").GetComponent<CardsGenerate>();
@@ -75,6 +77,7 @@ public class CardsManager : MonoBehaviour
 
         countDownGB.GetComponent<TextMeshProUGUI>().text = "The game has started!";
         GenerateCards();
+        gameControl.gameIsStarted = true;
         yield return new WaitForSeconds(1f);
         countDownGB.SetActive(false);
     }

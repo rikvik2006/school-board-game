@@ -34,11 +34,11 @@ public class TextSubmit : MonoBehaviour
         }
     }
 
-    public void HideReactangle()
+    public void HideReactangle(string state)
     {
         if (submitFormStatus == 1)
         {
-            StartCoroutine(HideReactangleCoroutine());
+            StartCoroutine(HideReactangleCoroutine(state));
             playerName = "";
             submitFormStatus = 0;
         }
@@ -46,10 +46,12 @@ public class TextSubmit : MonoBehaviour
 
     public void SubmitForm()
     {
+        Debug.Log("Submit form status: " + submitFormStatus);
         if (submitFormStatus == 1)
         {
+            Debug.Log("In the submit form if statement");
             StartCoroutine(CheckTheWordInDictionary("https://api.dictionaryapi.dev/api/v2/entries/en/" + inputField.text, OnDictionaryCheckCompleted));
-            HideReactangle();
+            HideReactangle("submit");
             // StartCoroutine(DisableInventory());
             // CloseInvetory.CloseInventory();
             // popupWindow.AddToQueue("Word submitted");
@@ -58,7 +60,9 @@ public class TextSubmit : MonoBehaviour
 
     private void OnDictionaryCheckCompleted(DictionaryEntry[] dictionaryEntry)
     {
+        Debug.Log("After dictionary check. Before Frist return");
         if (dictionaryEntry[0].Equals(null)) return;
+        Debug.Log("After dictionary check. After Frist return");
 
         // Debug.Log("Word from api: " + dictionaryEntry[0].word);
         if (dictionaryEntry[0].word != inputField.text.ToLower())
@@ -68,6 +72,7 @@ public class TextSubmit : MonoBehaviour
         }
         else
         {
+            Debug.Log("After dictionary check. After second return");
             // Getting the meaning            
             int randomMeaningObj = UnityEngine.Random.Range(0, dictionaryEntry[0].meanings.Count);
             int randomMeaningDefinitionsObj = UnityEngine.Random.Range(0, dictionaryEntry[0].meanings[randomMeaningObj].definitions.Count);
@@ -76,6 +81,7 @@ public class TextSubmit : MonoBehaviour
             playerMoveDatabase.AddPlayerMoveTiles(playerNameText.text, inputField.text.Length, inputField.text, dictionaryEntry[0].meanings[randomMeaningObj].definitions[randomMeaningDefinitionsObj].definition);
         }
         inputField.text = "";
+        Debug.Log("Diciontry check Compleated");
     }
 
     IEnumerator ShowReactangleCoroutine()
@@ -92,7 +98,7 @@ public class TextSubmit : MonoBehaviour
         }
     }
 
-    IEnumerator HideReactangleCoroutine()
+    IEnumerator HideReactangleCoroutine(string state)
     {
         float time = 0;
         Vector2 startPosition = submitForm.anchoredPosition;
@@ -104,13 +110,20 @@ public class TextSubmit : MonoBehaviour
             submitForm.anchoredPosition = Vector2.Lerp(startPosition, finalPosition, time);
             yield return null;
         }
+
+        if (state == "submit")
+        {
+            inventory.gameObject.SetActive(false);
+        }
     }
 
     IEnumerator CheckTheWordInDictionary(string url, Action<DictionaryEntry[]> callback)
     {
         using (UnityWebRequest response = UnityWebRequest.Get(url))
         {
+            Debug.Log("In the coroutine where the word is checked");
             yield return response.SendWebRequest();
+            Debug.Log("After the response is sent (word check)");
 
             if (response.result == UnityWebRequest.Result.ProtocolError || response.result == UnityWebRequest.Result.ConnectionError)
             {

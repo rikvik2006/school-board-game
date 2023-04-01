@@ -31,6 +31,7 @@ public class GameControl : MonoBehaviour
     private PlayerMoveTiles player3MoveTiles;
     private PlayerMoveTiles player4MoveTiles;
     public bool movePhase = false;
+    public bool gameIsStarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +68,7 @@ public class GameControl : MonoBehaviour
             // player1.GetComponent<FollowThePaht>().waypointIndex = player1TilesToMove;
         }
 
-        Debug.Log("CALCOLI PER L'AVVIO: " + player1.GetComponent<FollowThePaht>().waypointIndex + " " + player1StartWaypoint + " " + player1TilesToMove + " " + (player1StartWaypoint + player1TilesToMove));
+        // Debug.Log("CALCOLI PER L'AVVIO: " + player1.GetComponent<FollowThePaht>().waypointIndex + " " + player1StartWaypoint + " " + player1TilesToMove + " " + (player1StartWaypoint + player1TilesToMove));
         if (player1.GetComponent<FollowThePaht>().waypointIndex > player1StartWaypoint + player1TilesToMove)
         {
             player1.GetComponent<FollowThePaht>().moveallowed = false;

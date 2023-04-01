@@ -10,7 +10,7 @@ public class ImprevistiDatabase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Imprevisto imprevisto = new Imprevisto();
+        Imprevisto imprevisto = ScriptableObject.CreateInstance<Imprevisto>();
         imprevisto.name = "null";
         imprevisto.description = "null";
         AddImprevistoAssegnato(imprevisto, "null");
@@ -34,7 +34,7 @@ public class ImprevistiDatabase : MonoBehaviour
     public void ClearImprevistoAsegnato()
     {
         this.imporevistiAssegnati.Clear();
-        Imprevisto imprevisto = new Imprevisto();
+        Imprevisto imprevisto = ScriptableObject.CreateInstance<Imprevisto>();
         imprevisto.name = "null";
         imprevisto.description = "null";
         AddImprevistoAssegnato(imprevisto, "null");
