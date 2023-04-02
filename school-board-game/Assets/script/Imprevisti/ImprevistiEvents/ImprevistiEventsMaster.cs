@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ImprevistiEventsMaster : MonoBehaviour
 {
-    public CardsInvetoryManager cardsInvetoryManager;
     public ImprevistoExecuted imprevistoExecuted;
     public static string Nameplayer { get; set; }
     [SerializeField]
     private ImprevistiDatabase imprevistiDatabase;
+    [SerializeField]
+    private PlayerMoveDatabase playerMoveDatabase;
 
 
-    public void StartImprevisto(string name)
+    // Nome dell imprevisto, deve essere scritto uguale a quello che vine stampato a shermo
+    public void StartImprevisto(string nameImprevisto)
     {
         ImprevistoDatabaseDocument imprevistoAssegnato = imprevistiDatabase.GetImprevistoAssegnato(Nameplayer);
 
@@ -25,9 +27,33 @@ public class ImprevistiEventsMaster : MonoBehaviour
         imprevisto.name = imprevistoAssegnato.name;
         imprevisto.description = imprevistoAssegnato.description;
 
-        switch (name)
+        Debug.Log("Imprevisto " + imprevisto.name + " for player: " + Nameplayer + " | Name parameter " + nameImprevisto);
+
+        switch (imprevisto.name)
         {
             case "All is fine":
+                imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+                break;
+            case "You are die":
+                // Il player non deve poter scrivere una parola il prossimo turno
+                // switch (Nameplayer)
+                // {
+                //     case "Player1":
+
+                //         break;
+                //     case "Player2":
+
+                //         break;
+                //     case "Player3":
+
+                //         break;
+                //     case "Player4":
+
+                //         break;
+                // }
+
+                Debug.Log("Dalla classe ImprevistiEventMaster: Imprevisto You are die per player: " + Nameplayer);
+                playerMoveDatabase.AddPlayerMoveTiles(Nameplayer, 0, "null", "null");
                 imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
                 break;
         }

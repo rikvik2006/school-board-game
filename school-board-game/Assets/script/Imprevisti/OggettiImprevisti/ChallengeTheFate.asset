@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f10edbc11845d4c9428234bda4fd3d, type: 3}
   m_Name: ChallengeTheFate
   m_EditorClassIdentifier: 
-  name: 
-  description: 
+  name: Challenge the Fate
+  description: You challenge the fate, if you are in the lead move forward of 1 step,
+    otherwise the one in the lead moves forward of 1

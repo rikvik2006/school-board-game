@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckImprevistoTiles : MonoBehaviour
+// Assegnato ad ongi player, controlla se il player è sopra una casella imprevisto, se si, assegna un imprevisto al player.
 {
     [HideInInspector]
     public List<int> imporevistiTiles = new List<int> { 4, 6, 9, 10, 13, 15, 18, 19, 22, 24, 27, 28, 30, 31 };
@@ -36,7 +37,8 @@ public class CheckImprevistoTiles : MonoBehaviour
             }
 
             // TODO: Prendi la lista di Imprevisti dal file ImporevistoManager
-            Imprevisto imprevisto = imprevistoManager.GetRandomImporevisto();
+            // Imprevisto imprevisto = imprevistoManager.GetRandomImporevisto();
+            Imprevisto imprevisto = imprevistoManager.GetImprevisto(13);
             Debug.Log("Imprevisto: " + imprevisto.name + ", For Player: " + gameObject.name);
             imprevistiDatabase.AddImprevistoAssegnato(imprevisto, gameObject.name);
         }

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MeetPaky
   m_EditorClassIdentifier: 
   name: MeetPaky
-  description: Mett pkay giving a you a drive on his SH, you go forward of 2 tiles
+  description: You meet Paky and he gives you a lift on the SH, move forward of 2
+    steps

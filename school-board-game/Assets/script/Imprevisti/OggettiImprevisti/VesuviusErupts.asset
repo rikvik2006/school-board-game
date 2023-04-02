@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f10edbc11845d4c9428234bda4fd3d, type: 3}
   m_Name: VesuviusErupts
   m_EditorClassIdentifier: 
-  name: Vesuvius erupts
+  name: it's 79 A.D.
   description: Vesuvius erupts. All the teams move backward of 1 step

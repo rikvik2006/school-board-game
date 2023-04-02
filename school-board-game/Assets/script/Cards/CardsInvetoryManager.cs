@@ -41,6 +41,7 @@ public class CardsInvetoryManager : MonoBehaviour
     {
     }
 
+    // Funzione chiamata dal bottone con l'amoungus che si trova nella scena di gioco, il parametro namePlayer viene passato dal bottone.
     public void AddCardForPlayer(string namePlayer)
     {
         PlayerMoveTiles playerMoveTiles = playerMoveDatabase.playerMoveTilesList.Find(x => x.playerName == namePlayer);
@@ -116,7 +117,6 @@ public class CardsInvetoryManager : MonoBehaviour
 
     private void ShowImprevistoCard(string namePlayer)
     {
-        Nameplayer = namePlayer;
         ImprevistiEventsMaster.Nameplayer = namePlayer;
         if (imprevistoCard.activeSelf == false)
         {

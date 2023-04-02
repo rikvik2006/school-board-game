@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 0
     width: 478
     height: 842
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -121,8 +121,8 @@ MonoBehaviour:
     y: 842
     width: 1997
     height: 457
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 16}
@@ -391,7 +391,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 23948
+  m_LastSelectedObjectID: 23844
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -498,22 +498,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/script/Cards
+    - Assets/script/Imprevisti/UI
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/script/Cards
+  - Assets/script/Imprevisti/UI
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Unity\Projects\school-board-game\school-board-game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 240}
-    m_SelectedIDs: e6810000
-    m_LastClickedID: 33254
-    m_ExpandedIDs: 0000000048660000
+    scrollPos: {x: 0, y: 31}
+    m_SelectedIDs: dc660000
+    m_LastClickedID: 26332
+    m_ExpandedIDs: 000000006c660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -541,7 +541,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000048660000
+    m_ExpandedIDs: 000000006c660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -566,8 +566,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 665e0000
-    m_LastClickedInstanceID: 24166
+    m_SelectedInstanceIDs: 245d0000
+    m_LastClickedInstanceID: 23844
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000058690000f45a0000067800002863000050b3000058610000685f0000745f00007e61000012660000000000008c660000
     m_RenameOverlay:
@@ -668,10 +668,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 32}
-      m_SelectedIDs: a6faffff
-      m_LastClickedID: -1370
-      m_ExpandedIDs: a6faffffeefaffffd05c0000
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 6e600000
+      m_LastClickedID: 24686
+      m_ExpandedIDs: eefaffffd65c0000845f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -816,7 +816,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: -321, y: -190}
+      snapOffset: {x: -322, y: -190}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Scene View/Camera
@@ -953,9 +953,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -15.828414, y: 14.202858, z: 4.931568}
+    m_Target: {x: 744.7593, y: 339.04135, z: -61.5177}
     speed: 2
-    m_Value: {x: -15.828414, y: 14.202858, z: 4.931568}
+    m_Value: {x: 744.7593, y: 339.04135, z: -61.5177}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1001,13 +1001,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.29664588, y: -0.043801676, z: 0.013627451, w: 0.9539012}
+    m_Target: {x: -0.031479355, y: 0.032958012, z: -0.0010320203, w: -0.99898636}
     speed: 2
-    m_Value: {x: 0.29809207, y: -0.04235031, z: 0.01324581, w: 0.95350516}
+    m_Value: {x: -0.031478535, y: 0.032957155, z: -0.0010319935, w: -0.9989604}
   m_Size:
-    m_Target: 15.859615
+    m_Target: 322.5565
     speed: 2
-    m_Value: 15.176665
+    m_Value: 322.5565
   m_Ortho:
     m_Target: 0
     speed: 2

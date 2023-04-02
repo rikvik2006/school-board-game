@@ -129,6 +129,8 @@ public class TextSubmit : MonoBehaviour
             if (response.result == UnityWebRequest.Result.ProtocolError || response.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.Log(response.error);
+
+                // TODO: Se la parola non esiste, aggiugi al database la parole che non esiste, in modo tale da dare solo una possibilità al giocatore di inserire una parola
             }
 
             if (response.result == UnityWebRequest.Result.Success)

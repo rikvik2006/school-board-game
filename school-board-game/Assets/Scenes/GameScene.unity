@@ -1200,6 +1200,7 @@ GameObject:
   - component: {fileID: 189648014}
   - component: {fileID: 189648013}
   - component: {fileID: 189648012}
+  - component: {fileID: 189648016}
   m_Layer: 5
   m_Name: Execute
   m_TagString: Untagged
@@ -1335,6 +1336,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189648010}
   m_CullTransparentMesh: 1
+--- !u!114 &189648016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189648010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8c6f0ef3aea8147863f3b9d3775cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imprevistoExecuted: {fileID: 618141633}
+  imprevistiDatabase: {fileID: 618141632}
+  playerMoveDatabase: {fileID: 618141628}
 --- !u!1 &232595502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3437,6 +3453,8 @@ GameObject:
   - component: {fileID: 618141630}
   - component: {fileID: 618141631}
   - component: {fileID: 618141632}
+  - component: {fileID: 618141633}
+  - component: {fileID: 618141634}
   m_Layer: 0
   m_Name: GameControl
   m_TagString: Untagged
@@ -3459,6 +3477,10 @@ MonoBehaviour:
   playerMoveDatabase: {fileID: 618141628}
   movePhase: 0
   gameIsStarted: 0
+  imprevistiPhasePlayer1: 0
+  imprevistiPhasePlayer2: 0
+  imprevistiPhasePlayer3: 0
+  imprevistiPhasePlayer4: 0
 --- !u!4 &618141623
 Transform:
   m_ObjectHideFlags: 0
@@ -3582,8 +3604,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imprevisti:
-  - {fileID: 11400000, guid: ec9661b1713572c469dfc9eebf4d6aeb, type: 2}
+  - {fileID: 11400000, guid: be802ded290eac04680ce681026a0e4c, type: 2}
+  - {fileID: 11400000, guid: 1d87fb186c3a64145bbbe40fa0860cb9, type: 2}
+  - {fileID: 11400000, guid: a8f93e76a08db274282578fe48723655, type: 2}
+  - {fileID: 11400000, guid: 5d541d48e4643564e96fbf1a234eb477, type: 2}
   - {fileID: 11400000, guid: d818772750ea499408bd2dcb8f9c3651, type: 2}
+  - {fileID: 11400000, guid: ec9661b1713572c469dfc9eebf4d6aeb, type: 2}
+  - {fileID: 11400000, guid: ee94974017241e74a8c11c039d10c832, type: 2}
+  - {fileID: 11400000, guid: 86e4ee95e67bed9419ec83310ac364df, type: 2}
+  - {fileID: 11400000, guid: d222b327e55de9e488ce9e03493efbf2, type: 2}
+  - {fileID: 11400000, guid: 095eaaa476153134b96bf608f6260263, type: 2}
+  - {fileID: 11400000, guid: c5a55094ba4ed694cb86ec9d0c37ea82, type: 2}
+  - {fileID: 11400000, guid: 76b2c9066c46bee4d8fe2ddad197edc9, type: 2}
+  - {fileID: 11400000, guid: 678886e468669504a9ef6fe67e3fa07a, type: 2}
+  - {fileID: 11400000, guid: b605ea869cc2f3b488b703574a41ec61, type: 2}
 --- !u!114 &618141632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3596,6 +3630,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e8fbc3100f67144ac8a47cc3457ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &618141633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618141621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115c0b98b5f83b64f8afd1003cbdebf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &618141634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618141621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8c6f0ef3aea8147863f3b9d3775cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imprevistoExecuted: {fileID: 0}
+  imprevistiDatabase: {fileID: 0}
+  playerMoveDatabase: {fileID: 0}
 --- !u!1 &619873696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4539303334718746859, guid: bdc58710d9c601744acd345dd572b584, type: 3}

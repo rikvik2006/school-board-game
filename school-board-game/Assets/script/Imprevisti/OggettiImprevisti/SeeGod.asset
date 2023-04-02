@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f10edbc11845d4c9428234bda4fd3d, type: 3}
   m_Name: SeeGod
   m_EditorClassIdentifier: 
-  name: 
-  description: 
+  name: See God
+  description: You see God, that illuminates you. The next turn your team receives
+    one Hint
