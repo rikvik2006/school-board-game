@@ -22,10 +22,18 @@ public class TextSubmit : MonoBehaviour
     [HideInInspector] public string playerName;
     private float submitFormStatus = 0;
     public GameObject imprevistoCard;
+    [SerializeField]
+    private GameControl gameControl;
 
 
     public void ShowReactangle()
     {
+        if (gameControl.imprevistiPhase == true)
+        {
+            popupWindow.AddToQueue("You can't send a word in unexpected event phase");
+            return;
+        }
+
         if (submitFormStatus == 0)
         {
             submitForm.gameObject.SetActive(true);
@@ -33,6 +41,7 @@ public class TextSubmit : MonoBehaviour
             playerName = playerNameText.text;
             submitFormStatus = 1;
         }
+
     }
 
     public void HideReactangle(string state)

@@ -45,7 +45,7 @@ public class CardsManager : MonoBehaviour
         // }
     }
 
-    private void GenerateCards()
+    public void GenerateCards()
     {
         cardsGeneratorPlayer1.GenerateCards();
         cardsGeneratorPlayer2.GenerateCards();

@@ -32,10 +32,13 @@ public class GameControl : MonoBehaviour
     private PlayerMoveTiles player4MoveTiles;
     public bool movePhase = false;
     public bool gameIsStarted = false;
-    public bool imprevistiPhasePlayer1 = false;
-    public bool imprevistiPhasePlayer2 = false;
-    public bool imprevistiPhasePlayer3 = false;
-    public bool imprevistiPhasePlayer4 = false;
+
+    // Imprevisti phase
+    public bool imprevistiPhase = false;
+    public ImprevistoExecuted imprevistoExecuted;
+
+    // Invertory card manager
+    public WordDatabase wordDatabase;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,7 @@ public class GameControl : MonoBehaviour
     {
         if (playerMoveDatabase.playerMoveTilesList.Count >= 5)
         {
+            imprevistiPhase = false;
             // TODO: Start to move the palyer if the list have 5 elements (this means that all player have aswered the qeustion) or the timer is over
             MovePlayer();
             movePhase = true;
@@ -168,6 +172,9 @@ public class GameControl : MonoBehaviour
             // This player is the last one to move, so we can start the next round
             // Stop the movePhase
             movePhase = false;
+            wordDatabase.DeleteAllLetters();
+            imprevistiPhase = true;
+
         }
 
         if (player4.GetComponent<FollowThePaht>().waypointIndex == player4.GetComponent<FollowThePaht>().waypoints.Length)
@@ -177,6 +184,12 @@ public class GameControl : MonoBehaviour
             // player4MoveText.gameObject.SetActive(false);
             whoWinsText.GetComponent<Text>().text = "Player 4 Wins!";
             gameOver = true;
+        }
+
+        if (imprevistoExecuted.imprevistiUsati.Count >= 5)
+        {
+            imprevistoExecuted.imprevistiUsati.Clear();
+            imprevistiPhase = false;
         }
     }
 

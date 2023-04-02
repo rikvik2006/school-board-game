@@ -5,9 +5,10 @@ using UnityEngine;
 public class ImprevistoZommato : MonoBehaviour
 {
     public GameObject imprevistoCard;
-    [SerializeField]
     private ImprevistiEventsMaster imprevistiEventsMaster;
     private Imprevisto imprevisto;
+    [SerializeField]
+    private TextSubmit textSubmit;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,9 @@ public class ImprevistoZommato : MonoBehaviour
         Debug.Log("Imprevisto name: " + imprevisto.name);
         imprevistiEventsMaster.StartImprevisto(imprevisto.name);
 
-        imprevistoCard.SetActive(true);
+        textSubmit.HideReactangle("submit");
+
+        // imprevistoCard.SetActive(true);
         transform.parent.gameObject.SetActive(false);
     }
 }

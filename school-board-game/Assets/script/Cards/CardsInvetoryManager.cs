@@ -24,7 +24,10 @@ public class CardsInvetoryManager : MonoBehaviour
     [SerializeField]
     // ImprevistiDatabase è una clasese che serve per contenere gli imprerivsti assegnati hai giocatori quando vanno sopra a una casella imprevisto.
     private ImprevistiDatabase imprevistiDatabase;
-    public string Nameplayer { get; set; }
+    [SerializeField]
+    private ImprevistoExecuted imprevistoExecuted;
+    // public string Nameplayer { get; set; }
+
 
     void Start()
     {
@@ -46,6 +49,8 @@ public class CardsInvetoryManager : MonoBehaviour
     {
         PlayerMoveTiles playerMoveTiles = playerMoveDatabase.playerMoveTilesList.Find(x => x.playerName == namePlayer);
 
+        ImprevistoDatabaseDocument imprevistoUsato = imprevistoExecuted.imprevistiUsati.Find(imprevisto => imprevisto.name == namePlayer);
+
         if (gameControl.gameIsStarted != true)
         {
             popupWindow.AddToQueue("Game isn't started yet");
@@ -62,6 +67,12 @@ public class CardsInvetoryManager : MonoBehaviour
         {
             Debug.Log("Arledy sented a word");
             popupWindow.AddToQueue("You have already sented a word");
+            return;
+        }
+
+        if (imprevistoUsato != null)
+        {
+            popupWindow.AddToQueue("You have arledy executed this unexpected event");
             return;
         }
 

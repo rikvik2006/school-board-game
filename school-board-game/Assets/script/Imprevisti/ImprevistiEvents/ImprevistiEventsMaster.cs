@@ -17,13 +17,20 @@ public class ImprevistiEventsMaster : MonoBehaviour
     {
         ImprevistoDatabaseDocument imprevistoAssegnato = imprevistiDatabase.GetImprevistoAssegnato(Nameplayer);
 
+        Imprevisto imprevisto = ScriptableObject.CreateInstance<Imprevisto>();
+
         if (imprevistoAssegnato == null)
         {
+            Debug.Log("All is fine for player: " + Nameplayer);
+
+            imprevisto.name = "All is fine";
+            imprevisto.description = "There are no chances, everything is quiet.";
+
+            imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
             return;
         }
 
         // Cnast from ImprevistoDatabaseDocument to Imprevisto
-        Imprevisto imprevisto = ScriptableObject.CreateInstance<Imprevisto>();
         imprevisto.name = imprevistoAssegnato.name;
         imprevisto.description = imprevistoAssegnato.description;
 
@@ -31,9 +38,6 @@ public class ImprevistiEventsMaster : MonoBehaviour
 
         switch (imprevisto.name)
         {
-            case "All is fine":
-                imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
-                break;
             case "You are die":
                 // Il player non deve poter scrivere una parola il prossimo turno
                 // switch (Nameplayer)
@@ -57,5 +61,8 @@ public class ImprevistiEventsMaster : MonoBehaviour
                 imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
                 break;
         }
+
+        // TODO: Chiudere l'inventario
+
     }
 }
