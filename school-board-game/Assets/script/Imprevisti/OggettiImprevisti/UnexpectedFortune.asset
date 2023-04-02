@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36f10edbc11845d4c9428234bda4fd3d, type: 3}
-  m_Name: StopHere
+  m_Name: UnexpectedFortune
   m_EditorClassIdentifier: 
-  name: StopHere
-  description: You skip a turn
+  name: Unexpected Fortune
+  description: You fall into a ditch and find 4 letters

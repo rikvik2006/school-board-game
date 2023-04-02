@@ -32,6 +32,10 @@ public class GameControl : MonoBehaviour
     private PlayerMoveTiles player4MoveTiles;
     public bool movePhase = false;
     public bool gameIsStarted = false;
+    public bool imprevistiPhasePlayer1 = false;
+    public bool imprevistiPhasePlayer2 = false;
+    public bool imprevistiPhasePlayer3 = false;
+    public bool imprevistiPhasePlayer4 = false;
 
     // Start is called before the first frame update
     void Start()

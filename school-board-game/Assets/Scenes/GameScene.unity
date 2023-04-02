@@ -2682,6 +2682,7 @@ MonoBehaviour:
   playerMoveDatabase: {fileID: 618141628}
   inventory: {fileID: 2008372670}
   playerName: 
+  imprevistoCard: {fileID: 1789954371}
 --- !u!1 &457481163
 GameObject:
   m_ObjectHideFlags: 0
@@ -8199,7 +8200,7 @@ GameObject:
   - component: {fileID: 1319250748}
   - component: {fileID: 1319250751}
   - component: {fileID: 1319250750}
-  - component: {fileID: 1319250749}
+  - component: {fileID: 1319250752}
   m_Layer: 5
   m_Name: ZommedImprevisto
   m_TagString: Untagged
@@ -8230,21 +8231,6 @@ RectTransform:
   m_AnchoredPosition: {x: -6.6, y: 41.1}
   m_SizeDelta: {x: 95, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1319250749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319250747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4220f18acca5ea648947b1a7930d3ecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imprevisto: {fileID: 11400000, guid: ec9661b1713572c469dfc9eebf4d6aeb, type: 2}
-  titleText: {fileID: 2003655976}
-  descriptionText: {fileID: 244193352}
 --- !u!114 &1319250750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8283,6 +8269,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319250747}
   m_CullTransparentMesh: 1
+--- !u!114 &1319250752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319250747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acff0d436a97af745ab938249fe249a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardTitle: {fileID: 2003655976}
+  cardDescription: {fileID: 244193352}
+  imprevistoDisplay: {fileID: 1789954373}
 --- !u!1 &1323841896
 GameObject:
   m_ObjectHideFlags: 0
