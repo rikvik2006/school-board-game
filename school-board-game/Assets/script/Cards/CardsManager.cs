@@ -17,6 +17,9 @@ public class CardsManager : MonoBehaviour
     private int countDownToCheckCardsSeconds = 0;
     private int countDownToCheckCardsMinute = 2;
 
+    // All instacied cards
+    private GameObject[] instaciedCards;
+
     private void Start()
     {
         gameControl = gameObject.GetComponent<GameControl>();
@@ -106,5 +109,28 @@ public class CardsManager : MonoBehaviour
         }
 
         yield return null;
+    }
+
+
+    // TODO: IMPORTANT - Nuovo gneratore di carte per ogni giocatore dopo aver fatto gli imprevisti
+
+
+    public void DeleteAllInstanciedCards()
+    {
+        instaciedCards = GameObject.FindGameObjectsWithTag("GameWordCard");
+
+        foreach (GameObject card in instaciedCards)
+        {
+            Destroy(card);
+        }
+    }
+
+    public void GenerateCardsAfterImprevisti()
+    {
+        DeleteAllInstanciedCards();
+        cardsGeneratorPlayer1.GenerateCards();
+        cardsGeneratorPlayer2.GenerateCards();
+        cardsGeneratorPlayer3.GenerateCards();
+        cardsGeneratorPlayer4.GenerateCards();
     }
 }

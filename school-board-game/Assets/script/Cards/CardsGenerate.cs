@@ -39,6 +39,7 @@ public class CardsGenerate : MonoBehaviour
 
     public void GenerateCards()
     {
+        generateCards = 0;
         while (generateCards < 10)
         {
             int letterIndex = Random.Range(0, letters.Length);

@@ -36,6 +36,7 @@ public class GameControl : MonoBehaviour
     // Imprevisti phase
     public bool imprevistiPhase = false;
     public ImprevistoExecuted imprevistoExecuted;
+    private CardsManager cardsManager;
 
     // Invertory card manager
     public WordDatabase wordDatabase;
@@ -53,6 +54,8 @@ public class GameControl : MonoBehaviour
         player2.GetComponent<FollowThePaht>().moveallowed = false;
         player3.GetComponent<FollowThePaht>().moveallowed = false;
         player4.GetComponent<FollowThePaht>().moveallowed = false;
+
+        cardsManager = gameObject.GetComponent<CardsManager>();
     }
 
     // Update is called once per frame
@@ -64,6 +67,7 @@ public class GameControl : MonoBehaviour
             // TODO: Start to move the palyer if the list have 5 elements (this means that all player have aswered the qeustion) or the timer is over
             MovePlayer();
             movePhase = true;
+
             // TODO: Start moving the camera
         }
 
@@ -188,8 +192,12 @@ public class GameControl : MonoBehaviour
 
         if (imprevistoExecuted.imprevistiUsati.Count >= 5)
         {
+            Debug.Log("TUTTI GLI IMPREVISTO SONO STATI USATI");
             imprevistoExecuted.imprevistiUsati.Clear();
             imprevistiPhase = false;
+
+            cardsManager.GenerateCardsAfterImprevisti();
+
         }
     }
 

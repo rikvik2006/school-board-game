@@ -44,6 +44,7 @@ public class TextSubmit : MonoBehaviour
 
     }
 
+    // This hide the submit form, and the inventory but onlyu if the state is "submit"
     public void HideReactangle(string state)
     {
         if (submitFormStatus == 1)
@@ -52,6 +53,13 @@ public class TextSubmit : MonoBehaviour
             playerName = "";
             submitFormStatus = 0;
         }
+    }
+
+    // This hide the Inveotory
+    public void HideInventory()
+    {
+        inventory.gameObject.SetActive(false);
+        imprevistoCard.SetActive(false);
     }
 
     public void SubmitForm()

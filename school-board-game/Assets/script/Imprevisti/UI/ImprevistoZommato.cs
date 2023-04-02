@@ -29,8 +29,10 @@ public class ImprevistoZommato : MonoBehaviour
 
         Debug.Log("Imprevisto name: " + imprevisto.name);
         imprevistiEventsMaster.StartImprevisto(imprevisto.name);
+        Debug.Log("DOPO IL METODO START IMPREVISTO");
+        Debug.Log("Lunghezza della lista di imrevisti usati: " + imprevistiEventsMaster.imprevistoExecuted.imprevistiUsati.Count);
 
-        textSubmit.HideReactangle("submit");
+        textSubmit.HideInventory();
 
         // imprevistoCard.SetActive(true);
         transform.parent.gameObject.SetActive(false);
