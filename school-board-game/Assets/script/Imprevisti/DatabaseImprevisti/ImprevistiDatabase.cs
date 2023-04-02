@@ -39,6 +39,13 @@ public class ImprevistiDatabase : MonoBehaviour
         imprevisto.description = "null";
         AddImprevistoAssegnato(imprevisto, "null");
     }
+
+    public ImprevistoDatabaseDocument GetImprevistoAssegnato(string forPlayer)
+    {
+        ImprevistoDatabaseDocument imprevistoAssegnato = imporevistiAssegnati.Find(imprevisto => imprevisto.forPlayer == forPlayer);
+
+        return imprevistoAssegnato;
+    }
 }
 
 

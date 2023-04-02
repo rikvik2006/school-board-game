@@ -24,6 +24,8 @@ public class CardsInvetoryManager : MonoBehaviour
     [SerializeField]
     // ImprevistiDatabase è una clasese che serve per contenere gli imprerivsti assegnati hai giocatori quando vanno sopra a una casella imprevisto.
     private ImprevistiDatabase imprevistiDatabase;
+    public string Nameplayer { get; set; }
+
     void Start()
     {
         imprevistoCard.SetActive(false);
@@ -114,6 +116,8 @@ public class CardsInvetoryManager : MonoBehaviour
 
     private void ShowImprevistoCard(string namePlayer)
     {
+        Nameplayer = namePlayer;
+        ImprevistiEventsMaster.Nameplayer = namePlayer;
         if (imprevistoCard.activeSelf == false)
         {
             imprevistoCard.SetActive(true);
