@@ -71,9 +71,11 @@ public class ImprevistiEventsMaster : MonoBehaviour
                 // if you are in the lead move forward of 1 step, otherwise the one in the lead moves forward of 1
 
                 int player1WayPoint = player1.GetComponent<FollowThePaht>().waypointIndex;
-                int player2WayPoint = player1.GetComponent<FollowThePaht>().waypointIndex;
-                int player3WayPoint = player1.GetComponent<FollowThePaht>().waypointIndex;
-                int player4WayPoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+                int player2WayPoint = player2.GetComponent<FollowThePaht>().waypointIndex;
+                int player3WayPoint = player3.GetComponent<FollowThePaht>().waypointIndex;
+                int player4WayPoint = player4.GetComponent<FollowThePaht>().waypointIndex;
+
+                Debug.LogFormat("Player1: {0} | Player2: {1} | Player3: {2} | Player4: {3}", player1WayPoint, player2WayPoint, player3WayPoint, player4WayPoint);
 
                 int maxWayPoint = player1WayPoint;
 
@@ -91,6 +93,8 @@ public class ImprevistiEventsMaster : MonoBehaviour
                 {
                     maxWayPoint = player4WayPoint;
                 }
+
+                Debug.LogFormat("MaxWayPoint: {0}", maxWayPoint);
 
                 if (player1WayPoint == maxWayPoint)
                 {
@@ -111,11 +115,30 @@ public class ImprevistiEventsMaster : MonoBehaviour
 
                 imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
                 break;
-                // case "See God":
+            // case "See God":
 
 
-                //     imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
-                //     break;
+            //     imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+            //     break;
+            case "Meet Paky":
+                switch (Nameplayer)
+                {
+                    case "Player1":
+                        imprevistiMovimentController.MovePlayer1(2);
+                        break;
+                    case "Player2":
+                        imprevistiMovimentController.MovePlayer2(2);
+                        break;
+                    case "Player3":
+                        imprevistiMovimentController.MovePlayer3(2);
+                        break;
+                    case "Player4":
+                        imprevistiMovimentController.MovePlayer4(2);
+                        break;
+                }
+
+                imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+                break;
 
         }
 

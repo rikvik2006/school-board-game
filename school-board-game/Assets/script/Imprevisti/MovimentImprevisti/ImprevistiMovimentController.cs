@@ -38,6 +38,7 @@ public class ImprevistiMovimentController : MonoBehaviour
 
                 // Aggiorniamo in GameControl il valore di player1StartWaypoint che serve per il movimento del player1
                 GameControl.player1StartWaypoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+                Debug.Log("waypointIndex: " + player1.GetComponent<FollowThePaht>().waypointIndex + "| player1StartWaypoint: " + player1StartWaypoint);
             }
 
             if (player2.GetComponent<FollowThePaht>().waypointIndex > player2StartWaypoint + tilesTargetPlayer2)
