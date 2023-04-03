@@ -43,7 +43,7 @@ public class CheckImprevistoTiles : MonoBehaviour
 
             // TODO: Prendi la lista di Imprevisti dal file ImporevistoManager
             // Imprevisto imprevisto = imprevistoManager.GetRandomImporevisto();
-            Imprevisto imprevisto = imprevistoManager.GetImprevisto(13);
+            Imprevisto imprevisto = imprevistoManager.GetImprevisto(1);
             Debug.Log("Imprevisto: " + imprevisto.name + ", For Player: " + gameObject.name);
             imprevistiDatabase.AddImprevistoAssegnato(imprevisto, gameObject.name);
         }

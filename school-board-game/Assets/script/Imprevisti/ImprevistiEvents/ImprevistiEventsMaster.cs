@@ -10,6 +10,16 @@ public class ImprevistiEventsMaster : MonoBehaviour
     private ImprevistiDatabase imprevistiDatabase;
     [SerializeField]
     private PlayerMoveDatabase playerMoveDatabase;
+    private GameObject player1, player2, player3, player4;
+    public ImprevistiMovimentController imprevistiMovimentController;
+
+    private void Awake()
+    {
+        player1 = GameObject.Find("Player1");
+        player2 = GameObject.Find("Player2");
+        player3 = GameObject.Find("Player3");
+        player4 = GameObject.Find("Player4");
+    }
 
 
     // Nome dell imprevisto, deve essere scritto uguale a quello che vine stampato a shermo
@@ -39,27 +49,74 @@ public class ImprevistiEventsMaster : MonoBehaviour
         switch (imprevisto.name)
         {
             case "You are die":
-                // Il player non deve poter scrivere una parola il prossimo turno
-                // switch (Nameplayer)
-                // {
-                //     case "Player1":
-
-                //         break;
-                //     case "Player2":
-
-                //         break;
-                //     case "Player3":
-
-                //         break;
-                //     case "Player4":
-
-                //         break;
-                // }
-
                 Debug.Log("Dalla classe ImprevistiEventMaster: Imprevisto You are die per player: " + Nameplayer);
                 playerMoveDatabase.AddPlayerMoveTiles(Nameplayer, 0, "null", "null");
                 imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
                 break;
+            case "Professional Kidnapper":
+                imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+                break;
+            case "Go to jail":
+                playerMoveDatabase.AddPlayerMoveTiles(Nameplayer, 0, "null", "null");
+                imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+                break;
+            case "Wrong Choices":
+                Debug.Log("Questo imprevisto va eseguito, manualmente, cosa intedo, che non c'è una versione digitale, ma semplicemnte i palyer non potrenno utilizzare la carta scelta per il prossimo turno");
+                imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+                break;
+            case "AI Power":
+                imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+                break;
+            case "Challenge the Fate":
+                // if you are in the lead move forward of 1 step, otherwise the one in the lead moves forward of 1
+
+                int player1WayPoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+                int player2WayPoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+                int player3WayPoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+                int player4WayPoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+
+                int maxWayPoint = player1WayPoint;
+
+                if (player2WayPoint > maxWayPoint)
+                {
+                    maxWayPoint = player2WayPoint;
+                }
+
+                if (player3WayPoint > maxWayPoint)
+                {
+                    maxWayPoint = player3WayPoint;
+                }
+
+                if (player4WayPoint > maxWayPoint)
+                {
+                    maxWayPoint = player4WayPoint;
+                }
+
+                if (player1WayPoint == maxWayPoint)
+                {
+                    imprevistiMovimentController.MovePlayer1(1);
+                }
+                else if (player2WayPoint == maxWayPoint)
+                {
+                    imprevistiMovimentController.MovePlayer2(1);
+                }
+                else if (player3WayPoint == maxWayPoint)
+                {
+                    imprevistiMovimentController.MovePlayer3(1);
+                }
+                else if (player4WayPoint == maxWayPoint)
+                {
+                    imprevistiMovimentController.MovePlayer4(1);
+                }
+
+                imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+                break;
+                // case "See God":
+
+
+                //     imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+                //     break;
+
         }
 
         // TODO: Chiudere l'inventario
