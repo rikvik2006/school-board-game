@@ -1242,6 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imprevistoCard: {fileID: 1789954371}
+  textSubmit: {fileID: 439348872}
 --- !u!114 &189648013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2699,6 +2700,7 @@ MonoBehaviour:
   inventory: {fileID: 2008372670}
   playerName: 
   imprevistoCard: {fileID: 1789954371}
+  gameControl: {fileID: 618141622}
 --- !u!1 &457481163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,10 +3479,9 @@ MonoBehaviour:
   playerMoveDatabase: {fileID: 618141628}
   movePhase: 0
   gameIsStarted: 0
-  imprevistiPhasePlayer1: 0
-  imprevistiPhasePlayer2: 0
-  imprevistiPhasePlayer3: 0
-  imprevistiPhasePlayer4: 0
+  imprevistiPhase: 0
+  imprevistoExecuted: {fileID: 618141633}
+  wordDatabase: {fileID: 618141624}
 --- !u!4 &618141623
 Transform:
   m_ObjectHideFlags: 0
@@ -3654,9 +3655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8c6f0ef3aea8147863f3b9d3775cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imprevistoExecuted: {fileID: 0}
-  imprevistiDatabase: {fileID: 0}
-  playerMoveDatabase: {fileID: 0}
+  imprevistoExecuted: {fileID: 618141633}
+  imprevistiDatabase: {fileID: 618141632}
+  playerMoveDatabase: {fileID: 618141628}
 --- !u!1 &619873696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4539303334718746859, guid: bdc58710d9c601744acd345dd572b584, type: 3}
@@ -5545,6 +5546,7 @@ MonoBehaviour:
   gameControl: {fileID: 618141622}
   imprevistoCard: {fileID: 1789954371}
   imprevistiDatabase: {fileID: 618141632}
+  imprevistoExecuted: {fileID: 618141633}
 --- !u!1 &950506658
 GameObject:
   m_ObjectHideFlags: 0
@@ -7744,7 +7746,7 @@ MonoBehaviour:
   m_text: You don't have any cards
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81547d9b1eff0fd4e941440a1557a441, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1262395679988884859, guid: 81547d9b1eff0fd4e941440a1557a441, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7807,7 +7809,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 30.826307}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1211009044
@@ -10472,6 +10474,7 @@ MonoBehaviour:
   gameControl: {fileID: 618141622}
   imprevistoCard: {fileID: 1789954371}
   imprevistiDatabase: {fileID: 618141632}
+  imprevistoExecuted: {fileID: 618141633}
 --- !u!1 &1763626113
 GameObject:
   m_ObjectHideFlags: 0
@@ -10884,6 +10887,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imprevistoZoom: {fileID: 1319250747}
+  gameControl: {fileID: 618141622}
+  popupWindow: {fileID: 759120135}
+  imprevistoExecuted: {fileID: 618141633}
 --- !u!114 &1789954377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11701,6 +11707,7 @@ MonoBehaviour:
   gameControl: {fileID: 618141622}
   imprevistoCard: {fileID: 1789954371}
   imprevistiDatabase: {fileID: 618141632}
+  imprevistoExecuted: {fileID: 618141633}
 --- !u!1001 &1973549929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12525,6 +12532,7 @@ MonoBehaviour:
   gameControl: {fileID: 618141622}
   imprevistoCard: {fileID: 1789954371}
   imprevistiDatabase: {fileID: 618141632}
+  imprevistoExecuted: {fileID: 618141633}
 --- !u!1 &2012431971
 GameObject:
   m_ObjectHideFlags: 0

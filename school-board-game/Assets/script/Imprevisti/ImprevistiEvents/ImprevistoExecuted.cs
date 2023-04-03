@@ -5,6 +5,7 @@ using UnityEngine;
 public class ImprevistoExecuted : MonoBehaviour
 // Questa classe server per salvare gli imprevisti che sono stati usati dall untente, solo per evitare che l'utente possa rieseguire l'ho stesso imprevisti nella stessa fase.
 {
+    [SerializeField]
     public List<ImprevistoDatabaseDocument> imprevistiUsati = new List<ImprevistoDatabaseDocument>();
 
     private void Start()

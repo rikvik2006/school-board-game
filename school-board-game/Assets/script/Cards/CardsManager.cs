@@ -127,7 +127,7 @@ public class CardsManager : MonoBehaviour
 
     public void GenerateCardsAfterImprevisti()
     {
-        DeleteAllInstanciedCards();
+        // DeleteAllInstanciedCards();
         cardsGeneratorPlayer1.GenerateCards();
         cardsGeneratorPlayer2.GenerateCards();
         cardsGeneratorPlayer3.GenerateCards();

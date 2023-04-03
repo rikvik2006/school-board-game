@@ -95,7 +95,18 @@ public class TextSubmit : MonoBehaviour
             int randomMeaningDefinitionsObj = UnityEngine.Random.Range(0, dictionaryEntry[0].meanings[randomMeaningObj].definitions.Count);
 
             Debug.Log("Added word for player: " + playerNameText.text + " with " + inputField.text.Length + " tiles");
-            playerMoveDatabase.AddPlayerMoveTiles(playerNameText.text, inputField.text.Length, inputField.text, dictionaryEntry[0].meanings[randomMeaningObj].definitions[randomMeaningDefinitionsObj].definition);
+
+            if (gameControl.isFristTurn)
+            {
+                playerMoveDatabase.AddPlayerMoveTiles(playerNameText.text, inputField.text.Length, inputField.text, dictionaryEntry[0].meanings[randomMeaningObj].definitions[randomMeaningDefinitionsObj].definition);
+            }
+            else
+            {
+                playerMoveDatabase.AddPlayerMoveTiles(playerNameText.text, inputField.text.Length - 1, inputField.text, dictionaryEntry[0].meanings[randomMeaningObj].definitions[randomMeaningDefinitionsObj].definition);
+
+            }
+
+            Debug.Log("Currentily playerTiles playerMoveTilesList count: " + playerMoveDatabase.playerMoveTilesList.Count);
         }
         inputField.text = "";
         Debug.Log("Diciontry check Compleated");

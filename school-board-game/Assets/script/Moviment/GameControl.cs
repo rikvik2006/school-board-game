@@ -40,6 +40,7 @@ public class GameControl : MonoBehaviour
 
     // Invertory card manager
     public WordDatabase wordDatabase;
+    public bool isFristTurn = true;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,7 @@ public class GameControl : MonoBehaviour
             // TODO: Start to move the palyer if the list have 5 elements (this means that all player have aswered the qeustion) or the timer is over
             MovePlayer();
             movePhase = true;
+            cardsManager.DeleteAllInstanciedCards();
 
             // TODO: Start moving the camera
         }
@@ -83,6 +85,7 @@ public class GameControl : MonoBehaviour
         // Debug.Log("CALCOLI PER L'AVVIO: " + player1.GetComponent<FollowThePaht>().waypointIndex + " " + player1StartWaypoint + " " + player1TilesToMove + " " + (player1StartWaypoint + player1TilesToMove));
         if (player1.GetComponent<FollowThePaht>().waypointIndex > player1StartWaypoint + player1TilesToMove)
         {
+            // Debug.Log("Player 1 set moviment to false at waypoint: " + player1.GetComponent<FollowThePaht>().waypointIndex + " and start waypoint: " + player1StartWaypoint + " and tiles to move: " + player1TilesToMove);
             player1.GetComponent<FollowThePaht>().moveallowed = false;
             // player1MoveText.gameObject.SetActive(false);
             // player2MoveText.gameObject.SetActive(true);
@@ -112,10 +115,15 @@ public class GameControl : MonoBehaviour
 
         if (player2.GetComponent<FollowThePaht>().waypointIndex > player2StartWaypoint + player2TilesToMove)
         {
+            Debug.Log("Player 2 start waypoint " + player2StartWaypoint);
             player2.GetComponent<FollowThePaht>().moveallowed = false;
             // player2MoveText.gameObject.SetActive(false);
             // player2MoveText.gameObject.SetActive(true);
             player2StartWaypoint = player2.GetComponent<FollowThePaht>().waypointIndex;
+
+            // Debug.Log("Disabled palyer 2 moviment, starting player 3 moviment");
+            // Debug.Log("Player 2 set moviment to false at waypoint: " + player2.GetComponent<FollowThePaht>().waypointIndex + " and start waypoint: " + player2StartWaypoint + " and tiles to move: " + player2TilesToMove);
+
 
             // Start the next player
             player3.GetComponent<FollowThePaht>().moveallowed = true;
@@ -175,6 +183,7 @@ public class GameControl : MonoBehaviour
 
             // This player is the last one to move, so we can start the next round
             // Stop the movePhase
+            Debug.Log("MOVE PHASE FINISHED (FALSE), STARTING THE IMPREVISTI PHASE (TRUE)");
             movePhase = false;
             wordDatabase.DeleteAllLetters();
             imprevistiPhase = true;
@@ -193,11 +202,11 @@ public class GameControl : MonoBehaviour
         if (imprevistoExecuted.imprevistiUsati.Count >= 5)
         {
             Debug.Log("TUTTI GLI IMPREVISTO SONO STATI USATI");
-            imprevistoExecuted.imprevistiUsati.Clear();
+            imprevistoExecuted.ClearImprevistoUsato();
             imprevistiPhase = false;
 
+            isFristTurn = false;
             cardsManager.GenerateCardsAfterImprevisti();
-
         }
     }
 
@@ -218,6 +227,8 @@ public class GameControl : MonoBehaviour
         //         player4.GetComponent<FollowThePaht>().moveallowed = true;
         //         break;
         // }
+
+        Debug.Log("LA FUNIZONE MOVE PLAYER è STATA CHIAMATA");
 
         palyerMoveTilesCopy = new List<PlayerMoveTiles>();
 
