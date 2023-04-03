@@ -26,6 +26,11 @@ public class CheckImprevistoTiles : MonoBehaviour
             return;
         }
 
+        if (gameControl.imprevistiPhase != true)
+        {
+            return;
+        }
+
         // Debug.Log("Waypoint Index: " + followThePathScript.waypointIndex + " For player: " + gameObject.name);
         if (imporevistiTiles.Exists((tile) => tile == followThePathScript.waypointIndex - 1))
         {

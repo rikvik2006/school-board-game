@@ -5,6 +5,7 @@ using UnityEngine;
 public class ImprevistiDatabase : MonoBehaviour
 // Questa classe serve per contrllare se un utente ha già un imporevisto assegnato, E NON serve come database di imporevisti generale per il gioco.
 {
+    [SerializeField]
     public List<ImprevistoDatabaseDocument> imporevistiAssegnati = new List<ImprevistoDatabaseDocument>();
 
     // Start is called before the first frame update
@@ -24,7 +25,9 @@ public class ImprevistiDatabase : MonoBehaviour
 
     public void AddImprevistoAssegnato(Imprevisto imprevisto, string forPlayer)
     {
-        ImprevistoDatabaseDocument imprevistoDatabaseDocument = new ImprevistoDatabaseDocument();
+        // ImprevistoDatabaseDocument imprevistoDatabaseDocument = new ImprevistoDatabaseDocument();
+        // MDMO 03/04/2022
+        ImprevistoDatabaseDocument imprevistoDatabaseDocument = ScriptableObject.CreateInstance<ImprevistoDatabaseDocument>();
         imprevistoDatabaseDocument.name = imprevisto.name;
         imprevistoDatabaseDocument.description = imprevisto.description;
         imprevistoDatabaseDocument.forPlayer = forPlayer;
@@ -49,9 +52,9 @@ public class ImprevistiDatabase : MonoBehaviour
 }
 
 
-public class ImprevistoDatabaseDocument
+public class ImprevistoDatabaseDocument : ScriptableObject
 {
-    public string name;
+    public new string name;
     public string description;
     public string forPlayer;
 

@@ -18,7 +18,9 @@ public class ImprevistoExecuted : MonoBehaviour
 
     public void AddImprevistoUsato(Imprevisto imprevisto, string forPlayer)
     {
-        ImprevistoDatabaseDocument imprevistoDatabaseDocument = new ImprevistoDatabaseDocument();
+        // MDMO 03/04/2022
+        // ImprevistoDatabaseDocument imprevistoDatabaseDocument = new ImprevistoDatabaseDocument();
+        ImprevistoDatabaseDocument imprevistoDatabaseDocument = ScriptableObject.CreateInstance<ImprevistoDatabaseDocument>();
         imprevistoDatabaseDocument.name = imprevisto.name;
         imprevistoDatabaseDocument.description = imprevisto.description;
         imprevistoDatabaseDocument.forPlayer = forPlayer;

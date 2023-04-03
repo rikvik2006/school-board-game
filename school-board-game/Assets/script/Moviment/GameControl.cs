@@ -36,6 +36,7 @@ public class GameControl : MonoBehaviour
     // Imprevisti phase
     public bool imprevistiPhase = false;
     public ImprevistoExecuted imprevistoExecuted;
+    public ImprevistiDatabase imprevistiDatabase;
     private CardsManager cardsManager;
 
     // Invertory card manager
@@ -203,6 +204,8 @@ public class GameControl : MonoBehaviour
         {
             Debug.Log("TUTTI GLI IMPREVISTO SONO STATI USATI");
             imprevistoExecuted.ClearImprevistoUsato();
+            imprevistiDatabase.ClearImprevistoAsegnato();
+
             imprevistiPhase = false;
 
             isFristTurn = false;
