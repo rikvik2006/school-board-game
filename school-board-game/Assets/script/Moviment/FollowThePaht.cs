@@ -10,6 +10,7 @@ public class FollowThePaht : MonoBehaviour
     [HideInInspector]
     public int waypointIndex = 0;
     public bool moveallowed = false;
+    public bool goBackwards = false;
     // Start is called before the first frame update
 
     // Custom moviment
@@ -27,6 +28,10 @@ public class FollowThePaht : MonoBehaviour
         if (moveallowed)
         {
             Move();
+        }
+        else if (goBackwards)
+        {
+            GoBackwards();
         }
     }
 
@@ -64,5 +69,20 @@ public class FollowThePaht : MonoBehaviour
     //     }
     // }
 
+    public void GoBackwards()
+    {
+        if (waypointIndex > 0)
+        {
+            Vector3 wayPointPosition = waypoints[waypointIndex - 1].transform.position;
 
+            wayPointPosition.Set(wayPointPosition.x, transform.position.y, wayPointPosition.z);
+            // Moving the player to the waypoint
+            transform.position = Vector3.MoveTowards(transform.position, wayPointPosition, moveSpeed * Time.deltaTime);
+
+            if (transform.position.x == waypoints[waypointIndex - 1].transform.position.x && transform.position.z == waypoints[waypointIndex - 1].transform.position.z)
+            {
+                waypointIndex -= 1;
+            }
+        }
+    }
 }

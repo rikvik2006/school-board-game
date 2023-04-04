@@ -38,6 +38,7 @@ public class GameControl : MonoBehaviour
     public ImprevistoExecuted imprevistoExecuted;
     public ImprevistiDatabase imprevistiDatabase;
     private CardsManager cardsManager;
+    public bool isGoingBackwards = false;
 
     // Invertory card manager
     public WordDatabase wordDatabase;

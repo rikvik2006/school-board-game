@@ -139,10 +139,23 @@ public class ImprevistiEventsMaster : MonoBehaviour
 
                 imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
                 break;
-
+            case "it's 79 A.D.":
+                StartCoroutine(MovePlayerBackworksForVesuvio(imprevisto));
+                break;
         }
 
         // TODO: Chiudere l'inventario
 
+    }
+
+    IEnumerator MovePlayerBackworksForVesuvio(Imprevisto imprevisto)
+    {
+        imprevistiMovimentController.MovePlayer1Backwards(1);
+        imprevistiMovimentController.MovePlayer2Backwards(1);
+        imprevistiMovimentController.MovePlayer3Backwards(1);
+        imprevistiMovimentController.MovePlayer4Backwards(1);
+
+        imprevistoExecuted.AddImprevistoUsato(imprevisto, Nameplayer);
+        yield return null;
     }
 }

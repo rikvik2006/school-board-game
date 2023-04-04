@@ -71,6 +71,52 @@ public class ImprevistiMovimentController : MonoBehaviour
                 GameControl.player4StartWaypoint = player4.GetComponent<FollowThePaht>().waypointIndex;
             }
         }
+
+        if (gameControl.isGoingBackwards)
+        {
+            if (player1.GetComponent<FollowThePaht>().waypointIndex < player1StartWaypoint - tilesTargetPlayer1)
+            {
+                Debug.LogFormat("player1StartWaypoint: {0} | tilesTargetPlayer1: {1} | waypointIndex: {2}", player1StartWaypoint, tilesTargetPlayer1, player1.GetComponent<FollowThePaht>().waypointIndex);
+                player1.GetComponent<FollowThePaht>().goBackwards = false;
+                gameControl.isGoingBackwards = false;
+
+                player1StartWaypoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+
+                GameControl.player1StartWaypoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+                Debug.LogFormat("Player1StartWaypoint: {0}", player1StartWaypoint);
+            }
+
+            if (player2.GetComponent<FollowThePaht>().waypointIndex < player2StartWaypoint - tilesTargetPlayer2)
+            {
+                Debug.LogFormat("player1StartWaypoint: {0} | tilesTargetPlayer1: {1} | waypointIndex: {2}", player2StartWaypoint, tilesTargetPlayer2, player2.GetComponent<FollowThePaht>().waypointIndex);
+                player2.GetComponent<FollowThePaht>().goBackwards = false;
+                gameControl.isGoingBackwards = false;
+
+                player2StartWaypoint = player2.GetComponent<FollowThePaht>().waypointIndex;
+
+                GameControl.player2StartWaypoint = player2.GetComponent<FollowThePaht>().waypointIndex;
+            }
+
+            if (player3.GetComponent<FollowThePaht>().waypointIndex < player3StartWaypoint - tilesTargetPlayer3)
+            {
+                player3.GetComponent<FollowThePaht>().goBackwards = false;
+                gameControl.isGoingBackwards = false;
+
+                player3StartWaypoint = player3.GetComponent<FollowThePaht>().waypointIndex;
+
+                GameControl.player3StartWaypoint = player3.GetComponent<FollowThePaht>().waypointIndex;
+            }
+
+            if (player4.GetComponent<FollowThePaht>().waypointIndex < player4StartWaypoint - tilesTargetPlayer4)
+            {
+                player4.GetComponent<FollowThePaht>().goBackwards = false;
+                gameControl.isGoingBackwards = false;
+
+                player4StartWaypoint = player4.GetComponent<FollowThePaht>().waypointIndex;
+
+                GameControl.player4StartWaypoint = player4.GetComponent<FollowThePaht>().waypointIndex;
+            }
+        }
     }
 
     public void MovePlayer1(int tilesTarget)
@@ -99,5 +145,38 @@ public class ImprevistiMovimentController : MonoBehaviour
         player4StartWaypoint = player4.GetComponent<FollowThePaht>().waypointIndex;
         this.tilesTargetPlayer4 = tilesTarget - 1;
         player4.GetComponent<FollowThePaht>().moveallowed = true;
+    }
+
+    // Move backwards start function
+    public void MovePlayer1Backwards(int tilesTarget)
+    {
+        player1StartWaypoint = player1.GetComponent<FollowThePaht>().waypointIndex;
+        this.tilesTargetPlayer1 = tilesTarget;
+        gameControl.isGoingBackwards = true;
+        player1.GetComponent<FollowThePaht>().goBackwards = true;
+    }
+
+    public void MovePlayer2Backwards(int tilesTarget)
+    {
+        player2StartWaypoint = player2.GetComponent<FollowThePaht>().waypointIndex;
+        this.tilesTargetPlayer2 = tilesTarget;
+        gameControl.isGoingBackwards = true;
+        player2.GetComponent<FollowThePaht>().goBackwards = true;
+    }
+
+    public void MovePlayer3Backwards(int tilesTarget)
+    {
+        player3StartWaypoint = player3.GetComponent<FollowThePaht>().waypointIndex;
+        this.tilesTargetPlayer3 = tilesTarget;
+        gameControl.isGoingBackwards = true;
+        player3.GetComponent<FollowThePaht>().goBackwards = true;
+    }
+
+    public void MovePlayer4Backwards(int tilesTarget)
+    {
+        player4StartWaypoint = player4.GetComponent<FollowThePaht>().waypointIndex;
+        this.tilesTargetPlayer4 = tilesTarget;
+        gameControl.isGoingBackwards = true;
+        player4.GetComponent<FollowThePaht>().goBackwards = true;
     }
 }
