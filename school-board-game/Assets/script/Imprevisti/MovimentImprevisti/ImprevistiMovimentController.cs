@@ -74,9 +74,10 @@ public class ImprevistiMovimentController : MonoBehaviour
 
         if (gameControl.isGoingBackwards)
         {
-            if (player1.GetComponent<FollowThePaht>().waypointIndex < player1StartWaypoint - tilesTargetPlayer1)
+            Debug.LogFormat("player1StartWaypoint: {0} | tilesTargetPlayer1: {1} | waypointIndex: {2}", player1StartWaypoint, tilesTargetPlayer1, player1.GetComponent<FollowThePaht>().waypointIndex);
+            // if (player1.GetComponent<FollowThePaht>().waypointIndex < player1StartWaypoint - Mathf.Abs(tilesTargetPlayer1))
+            if (player1.GetComponent<FollowThePaht>().waypointIndex < player1StartWaypoint && player1StartWaypoint - player1.GetComponent<FollowThePaht>().waypointIndex > tilesTargetPlayer1)
             {
-                Debug.LogFormat("player1StartWaypoint: {0} | tilesTargetPlayer1: {1} | waypointIndex: {2}", player1StartWaypoint, tilesTargetPlayer1, player1.GetComponent<FollowThePaht>().waypointIndex);
                 player1.GetComponent<FollowThePaht>().goBackwards = false;
                 gameControl.isGoingBackwards = false;
 
@@ -86,9 +87,9 @@ public class ImprevistiMovimentController : MonoBehaviour
                 Debug.LogFormat("Player1StartWaypoint: {0}", player1StartWaypoint);
             }
 
-            if (player2.GetComponent<FollowThePaht>().waypointIndex < player2StartWaypoint - tilesTargetPlayer2)
+            Debug.LogFormat("player1StartWaypoint: {0} | tilesTargetPlayer1: {1} | waypointIndex: {2}", player2StartWaypoint, tilesTargetPlayer2, player2.GetComponent<FollowThePaht>().waypointIndex);
+            if (player2.GetComponent<FollowThePaht>().waypointIndex < player2StartWaypoint - Mathf.Abs(tilesTargetPlayer2))
             {
-                Debug.LogFormat("player1StartWaypoint: {0} | tilesTargetPlayer1: {1} | waypointIndex: {2}", player2StartWaypoint, tilesTargetPlayer2, player2.GetComponent<FollowThePaht>().waypointIndex);
                 player2.GetComponent<FollowThePaht>().goBackwards = false;
                 gameControl.isGoingBackwards = false;
 
@@ -97,7 +98,8 @@ public class ImprevistiMovimentController : MonoBehaviour
                 GameControl.player2StartWaypoint = player2.GetComponent<FollowThePaht>().waypointIndex;
             }
 
-            if (player3.GetComponent<FollowThePaht>().waypointIndex < player3StartWaypoint - tilesTargetPlayer3)
+            Debug.LogFormat("player1StartWaypoint: {0} | tilesTargetPlayer1: {1} | waypointIndex: {2}", player3StartWaypoint, tilesTargetPlayer3, player3.GetComponent<FollowThePaht>().waypointIndex);
+            if (player3.GetComponent<FollowThePaht>().waypointIndex < player3StartWaypoint - Mathf.Abs(tilesTargetPlayer3))
             {
                 player3.GetComponent<FollowThePaht>().goBackwards = false;
                 gameControl.isGoingBackwards = false;
@@ -107,7 +109,8 @@ public class ImprevistiMovimentController : MonoBehaviour
                 GameControl.player3StartWaypoint = player3.GetComponent<FollowThePaht>().waypointIndex;
             }
 
-            if (player4.GetComponent<FollowThePaht>().waypointIndex < player4StartWaypoint - tilesTargetPlayer4)
+            Debug.LogFormat("player1StartWaypoint: {0} | tilesTargetPlayer1: {1} | waypointIndex: {2}", player4StartWaypoint, tilesTargetPlayer4, player4.GetComponent<FollowThePaht>().waypointIndex);
+            if (player4.GetComponent<FollowThePaht>().waypointIndex < player4StartWaypoint - Mathf.Abs(tilesTargetPlayer4))
             {
                 player4.GetComponent<FollowThePaht>().goBackwards = false;
                 gameControl.isGoingBackwards = false;

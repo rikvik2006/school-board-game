@@ -81,6 +81,7 @@ public class FollowThePaht : MonoBehaviour
 
             if (transform.position.x == waypoints[waypointIndex - 1].transform.position.x && transform.position.z == waypoints[waypointIndex - 1].transform.position.z)
             {
+                Debug.LogFormat("Decrementando per {0}", gameObject.name);
                 waypointIndex -= 1;
             }
         }

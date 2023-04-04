@@ -9,7 +9,10 @@ public class TextInputChecker : MonoBehaviour
     public WordDatabase wordDatabase;
     public TextSubmit textSubmit;
     private TMP_InputField inputField;
+    // public TextMeshProUGUI playerNameText;
     private string playerName;
+    [SerializeField]
+    private List<string> letters = new List<string>();
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,7 @@ public class TextInputChecker : MonoBehaviour
     {
         if (textSubmit != null)
         {
-            playerName = textSubmit.playerName;
+            playerName = textSubmit.playerNameText.text;
         }
     }
 
@@ -32,7 +35,7 @@ public class TextInputChecker : MonoBehaviour
     {
         if (inputField.text.Length > 0)
         {
-            List<string> letters = wordDatabase.GetLettersForPlayer(playerName);
+            letters = wordDatabase.GetLettersForPlayer(playerName);
             // Debug.Log("Player name: " + playerName);
             // Debug.Log("New Value: " + newValue);
 
@@ -43,8 +46,14 @@ public class TextInputChecker : MonoBehaviour
 
             foreach (char letter in newValue)
             {
-                if (!letters.Contains(letter.ToString()))
+                string upperCaseLetter = letter.ToString().ToUpper();
+                if (!letters.Exists((x) => x == upperCaseLetter))
                 {
+                    // Sostituisci la lettera con una stringa vuota
+
+                    string replace = inputField.text.Replace(letter.ToString(), "");
+                    inputField.text = replace;
+
                     // string replace = inputField.text.Replace(letter.ToString(), "");
                     // Debug.Log("Replace: " + replace);
                     // inputField.text = replace;
