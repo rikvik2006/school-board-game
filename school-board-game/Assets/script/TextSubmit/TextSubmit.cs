@@ -159,6 +159,18 @@ public class TextSubmit : MonoBehaviour
                 Debug.Log(response.error);
 
                 // TODO: Se la parola non esiste, aggiugi al database la parole che non esiste, in modo tale da dare solo una possibilità al giocatore di inserire una parola
+
+                if (gameControl.isFristTurn)
+                {
+                    playerMoveDatabase.AddPlayerMoveTiles(playerNameText.text, 0, inputField.text, "Word not found");
+                }
+                else
+                {
+                    playerMoveDatabase.AddPlayerMoveTiles(playerNameText.text, 0, inputField.text, "Word not found");
+
+                }
+                HideReactangle("submit");
+                yield return null;
             }
 
             if (response.result == UnityWebRequest.Result.Success)
@@ -167,6 +179,7 @@ public class TextSubmit : MonoBehaviour
                 DictionaryEntry[] stringfyJson = JsonConvert.DeserializeObject<DictionaryEntry[]>(response.downloadHandler.text);
                 callback(stringfyJson);
                 // Disattiviamo l'inventario e la carta imprevisto
+                inputField.text = "";
                 HideReactangle("submit");
                 yield return stringfyJson;
             }

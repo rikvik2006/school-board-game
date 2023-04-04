@@ -83,8 +83,18 @@ public class CardsInvetoryManager : MonoBehaviour
             inventory.SetActive(true);
             List<string> letters = wordDatabase.GetLettersForPlayer(namePlayer);
 
+            foreach (GameObject card in cards)
+            {
+                card.SetActive(false);
+            }
+
             if (letters.Count <= 0)
             {
+                foreach (GameObject card in cards)
+                {
+                    card.SetActive(false);
+                }
+
                 noCardInInventory.SetActive(true);
                 return;
             }
@@ -92,15 +102,15 @@ public class CardsInvetoryManager : MonoBehaviour
             noCardInInventory.SetActive(false);
             namePlayerText.text = namePlayer;
 
-            int i = 0;
-            foreach (GameObject card in cards)
-            {
-                card.SetActive(true);
-                card.GetComponentInChildren<TextMeshProUGUI>().text = letters[i];
-                Debug.Log("Letter: " + letters[i] + " i: " + i);
-                i++;
-                break;
-            }
+            // int i = 0;
+            // foreach (GameObject card in cards)
+            // {
+            //     card.SetActive(true);
+            //     card.GetComponentInChildren<TextMeshProUGUI>().text = letters[i];
+            //     Debug.Log("Letter: " + letters[i] + " i: " + i);
+            //     i++;
+            //     break;
+            // }
 
             // For each letter in the list, add a card to the player 1 inventory and update the database
             foreach (string letter in letters)
@@ -140,7 +150,7 @@ public class CardsInvetoryManager : MonoBehaviour
             {
                 Imprevisto noImprevisto = ScriptableObject.CreateInstance<Imprevisto>();
                 noImprevisto.name = "All is fine";
-                noImprevisto.description = "There are no chances, everything is quiet.";
+                noImprevisto.description = "There are no Unexpected Event, everything is quiet.";
 
                 imprevistoDisplay.SetImprevisto(noImprevisto);
                 return;

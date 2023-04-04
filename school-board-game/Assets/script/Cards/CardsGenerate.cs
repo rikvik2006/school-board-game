@@ -15,6 +15,9 @@ public class CardsGenerate : MonoBehaviour
     public static bool needNewCards = false;
 
     private string[] letters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+
+    private string[] consonants = new string[] { "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z" };
+    private string[] vowels = new string[] { "A", "E", "I", "O", "U" };
     private int[] letterCount = new int[26];
     private int generateCards = 0;
 
@@ -41,21 +44,21 @@ public class CardsGenerate : MonoBehaviour
     {
         generateCards = 0;
         currentPosition = cardPosition;
-        while (generateCards < 10)
+        while (generateCards < 6)
         {
-            int letterIndex = Random.Range(0, letters.Length);
-            string letter = letters[letterIndex];
+            int consonantIndex = Random.Range(0, consonants.Length);
+            string consonant = consonants[consonantIndex];
 
-            if (letterCount[letterIndex] >= 2)
-            {
-                continue;
-            }
+            // if (letterCount[consonantIndex] >= 2)
+            // {
+            //     continue;
+            // }
 
-            letterCount[letterIndex]++;
+            // letterCount[consonantIndex]++;
 
             // Save the letter in the word database
             // Debug.Log("Letter: " + letter + " GameObject: " + gameObject.name);
-            wordDatabase.AddLetter(letter, gameObject.name);
+            wordDatabase.AddLetter(consonant, gameObject.name);
 
             GameObject card = Instantiate(cardPrefab, currentPosition, Quaternion.identity);
 
@@ -65,9 +68,32 @@ public class CardsGenerate : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(center - card.transform.position, Vector3.up);
             card.transform.rotation = rotation;
             card.transform.Rotate(Vector3.up, 90f);
-            card.transform.rotation = Quaternion.Euler(0, extraRotation, 0);
+            card.transform.rotation = Quaternion.Euler(90, extraRotation, -90);
 
-            cardLetter.text = letter;
+            card.GetComponentInChildren<TextMeshProUGUI>().text = consonant;
+            // cardLetter.text = consonant;
+            generateCards++;
+        }
+        while (generateCards < 10)
+        {
+            int vowelIndex = Random.Range(0, vowels.Length);
+            string vowel = vowels[vowelIndex];
+
+            wordDatabase.AddLetter(vowel, gameObject.name);
+
+            GameObject card = Instantiate(cardPrefab, currentPosition, Quaternion.identity);
+
+            card.transform.LookAt(center);
+            currentPosition += cardSpacing;
+
+            Quaternion rotation = Quaternion.LookRotation(center - card.transform.position, Vector3.up);
+            card.transform.rotation = rotation;
+            card.transform.Rotate(Vector3.up, 90f);
+
+            card.transform.rotation = Quaternion.Euler(90, extraRotation, -90);
+
+            card.GetComponentInChildren<TextMeshProUGUI>().text = vowel;
+            // cardLetter.text = vowel;
             generateCards++;
         }
     }

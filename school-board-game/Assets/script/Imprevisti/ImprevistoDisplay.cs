@@ -16,7 +16,7 @@ public class ImprevistoDisplay : MonoBehaviour
         Imprevisto imprevistoNull = ScriptableObject.CreateInstance<Imprevisto>();
         imprevistoNull.name = "All is fine";
         // Traducimi in inglse questo: Non ci sono imprevisti, tutto è traquillo.
-        imprevistoNull.description = "There are no chances, everything is quiet.";
+        imprevistoNull.description = "There are no Unexpected Event, everything is quiet.";
         this.imprevisto = imprevistoNull;
     }
 
